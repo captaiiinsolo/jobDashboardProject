@@ -11,7 +11,11 @@ function getAccuWeatherAPI() {
    .then(function(data) {
     console.log(data);
     console.log(data[0].Key); //Logs the city key we need to make other requests using Accuweathers other APIs
+
+    var cityKey = data[0].Key; 
+
     var cityKey = data[0].Key; // 347629 is the value of data[0].Key but console says its not defined.
+
     fetch("http://dataservice.accuweather.com/forecasts/v1/daily/1day/" + cityKey + "?apikey=" + APIKey)
    .then(function(response) {
     return response.json();
@@ -25,8 +29,7 @@ function getAccuWeatherAPI() {
    
 }
 
-//   getAccuWeatherAPI();
-
+getAccuWeatherAPI();
 
 
 
@@ -45,4 +48,8 @@ function getJobsAPI() {
       });
 }
 
-//   getJobsAPI();
+
+getJobsAPI();
+
+
+                                                                           

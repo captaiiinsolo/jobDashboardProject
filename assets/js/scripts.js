@@ -29,7 +29,7 @@ function getAccuWeatherAPI() {
    
 }
 
-getAccuWeatherAPI();
+//getAccuWeatherAPI();
 
 
 
@@ -49,7 +49,19 @@ function getJobsAPI() {
 }
 
 
-getJobsAPI();
+//getJobsAPI();
 
+function colaAPI(){
+  var colaURL = "https://datausa.io/api/data?drilldowns=Place&measures=Population&year=latest";
 
-                                                                           
+  fetch(colaURL)
+  .then(function(respons){
+    return respons.json();
+  })
+  .then(function(colaData){
+    console.log(colaData);
+  })
+
+}             
+
+colaAPI();

@@ -27,9 +27,6 @@ function getAccuWeatherAPI() {
 
 getAccuWeatherAPI();
 
-
-
-
 // Calls the adzuna job board API
 function getJobsAPI() {
   var appID = "a1161bda";

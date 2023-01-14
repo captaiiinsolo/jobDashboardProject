@@ -113,6 +113,9 @@ function showHousing() {
 // Runs the following functions on document load
 $(document).ready(function() {
 
+  showJobs();
+  showHousing();
+
   // Check for click events on the navbar burger icon
   $(".navbar-burger").click(function() {
 

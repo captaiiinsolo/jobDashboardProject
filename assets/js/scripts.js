@@ -29,7 +29,7 @@ function getAccuWeatherAPI() {
 
 }
 
-getAccuWeatherAPI();
+//getAccuWeatherAPI();
 
 
 //listens for jobs search click
@@ -38,15 +38,12 @@ document.querySelector("#jobbtn").addEventListener("click",function(event){
 alert(event)
 })
 
-
-
 // this function will be populating the job results query.
 var jobresults = document.querySelector("#jobresults");
 
 function jobresults(result) {
-  console.log()
-  
-}
+console.log()
+ 
 
 // Calls the adzuna job board API
 function getJobsAPI() {
@@ -61,6 +58,7 @@ function getJobsAPI() {
       .then(function(data) {
       console.log(data);
       });
+
 }
 
 
@@ -89,7 +87,7 @@ function colaAPI(){
 
 
 
-colaAPI();
+//colaAPI();
 
 
 
@@ -126,5 +124,4 @@ $(document).ready(function() {
   });
 
 });
-
 

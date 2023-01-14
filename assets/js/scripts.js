@@ -127,7 +127,4 @@ $(document).ready(function() {
 
 });
 
-//colaAPI();
 
-
-// colaAPI();

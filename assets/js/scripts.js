@@ -32,6 +32,21 @@ function getAccuWeatherAPI() {
 getAccuWeatherAPI();
 
 
+//listens for jobs search click
+document.querySelector("#jobbtn").addEventListener("click",function(event){
+  event.preventDefault()
+alert(event)
+})
+
+
+
+// this function will be populating the job results query.
+var jobresults = document.querySelector("#jobresults");
+
+function jobresults(result) {
+  console.log()
+  
+}
 
 // Calls the adzuna job board API
 function getJobsAPI() {
@@ -49,8 +64,16 @@ function getJobsAPI() {
 }
 
 
-//getJobsAPI();
+getJobsAPI();
 
+
+document.querySelector("#housingbtn").addEventListener("click",function(event){
+  event.preventDefault()
+alert(event)
+
+})
+
+// Calls cola data USA API
 function colaAPI(){
   var colaURL = "https://datausa.io/api/data?drilldowns=Place&measures=Population&year=latest";
 
@@ -63,5 +86,7 @@ function colaAPI(){
   })
 
 }
+
+//colaAPI();
 
 // colaAPI();

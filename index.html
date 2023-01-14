@@ -12,7 +12,6 @@
     <title>Full Spectrum Job Board</title>
 
 </head>
-<div>
 
     <!-- Hero Section with Nav Items and NavBrand -->
     <section class="hero is-medium is-dark">
@@ -52,221 +51,199 @@
     </section>
     <!-- End Hero Section -->
 
-    <!-- Weather Container  -->
+  <section>
+      <!-- Weather Container  -->
     <!-- Current weather -->
     <!-- 5day forecast-->
-   <div class="columns">
-        <div class="column is-one-quarter">
-            <h3>Search for Job</h3>
-            <div class="box">
-                <input class="input" type="text" placeholder="San Francisco">
+<div class="columns">
+    <div class="column is-one-quarter">
+        <h3>Search for Job</h3>
+        <div class="box">
+            <input class="input" type="text" placeholder="San Francisco">
+            <div class="input-btn">
+                <button class="button is-primary is-outlined" type="button" id="search-weather-btn"> Search </button>
+            </div>
+        </div>
 
-                    <div class="column is-one-quarter">
-                        <div id="current-city" class="box">
-                             <h3>City Name </h3>
-                             <br>
-                                <h4 class="card-title"> Date: </h4>
-                                <p class="card-text"> Temperature: </p>
-                                <p class="card-text"> Humidity: </p>
-                        </div>
-                        <div class="title" id="currentWeather"></div>
+        <!-- Current weather -->
+        <div class="column">
+        <div id="current-city" class="box">
+             <h3>City Name:</h3>
+             <br>
+                <h4 class="card-title"> Date: </h4>
+                <br>
+                <p class="card-text"> Temperature: </p>
+                <br>
+                <p class="card-text"> Humidity: </p>
+        </div>
+        <div class="title" id="currentWeather"></div>
+        </div>
+
+        <!-- 5day forecast -->
+    <div class="column">
+        <div id="fiveDay" class="box">
+            <h3>5day Forecast</h3>
+            <br>
+
+            <!-- day 1 -->
+            <div class="row" id="5d-forecast">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="current-day">day1</h4>
+                        <p id="current-temp"> Temperature: </p>
+                        <p id="current-humidity"> Humidity: </p>
                     </div>
-                    <div class="column is-one-quarter">
-                        <div id="fiveDay" class="box">
-                            <h3>5day Forecast</h3>
+                </div>
+            </div>
+            <br>
+
+            <!-- day2 -->
+            <div class="row" id="5d-forecast">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="current-day">day2</h4>
+                        <p id="current-temp"> Temperature: </p>
+                        <p id="current-humidity"> Humidity: </p>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <!-- day3 -->
+            <div class="row" id="5d-forecast">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="current-day">day3</h4>
+                        <p id="current-temp"> Temperature: </p>
+                        <p id="current-humidity"> Humidity: </p>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <!-- day4 -->
+            <div class="row" id="5d-forecast">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="current-day">day4</h4>
+                        <p id="current-temp"> Temperature: </p>
+                        <p id="current-humidity"> Humidity: </p>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <!-- day5 -->
+            <div class="row" id="5d-forecast">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="current-day">day5</h4>
+                        <p id="current-temp"> Temperature: </p>
+                        <p id="current-humidity"> Humidity: </p>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+        </div>
+    </div>
+
+<!-- End Weather Container -->
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!--Job-->
+
+<!--
+        <div class="columns "> -->
+            <div class="column is-offset-4">
+                <div class="box">
+                    <div class="container  mb-6">
+                       <div class="columns">
+                        <div class="column">
+                            <p class="title">JOBS</p>
+                        </div>
+                        <div class="column">
+                            <input type="text" class="input" placeholder=" JOB TITLE ">
+                        </div>
+                        <div class="column">
+                            <input type="text" class="input" placeholder=" LOCATION ">
+                       </div>
+                       <div class="colummn">
+                        <input id="jobbtn" class="button auto is-rounded mt-3" type="submit" >
+                       </div>
+                    </div>
+                <div class="notification ">
+                    <div class="box ">
+                    <div class="media-content">
+                        <div class="content">
+                         <p><strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
                             <br>
-            
-                            <div class="row" id="5d-forecast">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4> day1</h4>
-                                    </div>
-                                </div>
-                            </div>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+                          </p>
                         </div>
                     </div>
-
-                <div class="input-btn">
-                    <button class="button is-primary is-outlined" type="button" id="search-weather-btn"> Search </button>
+                </div>
                 </div>
             </div>
-        </div>
+        <!-- </div> -->
+
+
+
+<!--housing-->
+
+        <div class="columns is-three-quarters ">
+            <div class="column ">
+
     </div>
+</section>
 
-    <!-- Current weather -->
-    <div class="columns">
-        <div class="column is-one-quarter">
-            <div id="current-city" class="box">
-                 <h3>City Name:</h3>
-                 <br>
-                    <h4 class="card-title"> Date: </h4>
-                    <br>
-                    <p class="card-text"> Temperature: </p>
-                    <br>
-                    <p class="card-text"> Humidity: </p>
-            </div>
-            <div class="title" id="currentWeather"></div>
-        </div>
-    </div>
+<!--housing-->
+<section id="housingContainer" class="section mb-6">
+    <div class="container">
+        <div class="columns ">
+            <div class="column is-three-quarters is-offset-4">
 
-    <!-- 5day forecast-->
-    <div class="columns">
-        <div class="column is-one-quarter">
-            <div id="fiveDay" class="box">
-                <h3>5day Forecast</h3>
-                <br>
-
-                <!-- day 1 -->
-                <div class="row" id="5d-forecast">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="current-day">day1</h4>
-                            <p id="current-temp"> Temperature: </p>
-                            <p id="current-humidity"> Humidity: </p>
+                <div class="box">
+                    <div class="container  mb-6">
+                       <div class="columns">
+                        <div class="column">
+                            <p class="title">Housing</p>
+                        </div>
+                        <div class="column">
+                            <input type="text" class="input" placeholder=" LOCATION ">
+                       </div>
+                       <div class="colummn">
+                        <input id="housingbtn" class="button auto is-rounded mt-3" type="submit" >
+                       </div>
+                    </div>
+                <div class="notification ">
+                    <div class="box ">
+                    <div class="media-content">
+                        <div class="content">
+                         <p><strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+                            <br>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+                          </p>
                         </div>
                     </div>
                 </div>
-                <br>
-
-                <!-- day2 -->
-                <div class="row" id="5d-forecast">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="current-day">day2</h4>
-                            <p id="current-temp"> Temperature: </p>
-                            <p id="current-humidity"> Humidity: </p>
-                        </div>
-                    </div>
                 </div>
-                <br>
-
-                <!-- day3 -->
-                <div class="row" id="5d-forecast">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="current-day">day3</h4>
-                            <p id="current-temp"> Temperature: </p>
-                            <p id="current-humidity"> Humidity: </p>
-                        </div>
-                    </div>
-                </div>
-                <br>
-
-                <!-- day4 -->
-                <div class="row" id="5d-forecast">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="current-day">day4</h4>
-                            <p id="current-temp"> Temperature: </p>
-                            <p id="current-humidity"> Humidity: </p>
-                        </div>
-                    </div>
-                </div>
-                <br>
-
-                <!-- day5 -->
-                <div class="row" id="5d-forecast">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="current-day">day5</h4>
-                            <p id="current-temp"> Temperature: </p>
-                            <p id="current-humidity"> Humidity: </p>
-                        </div>
-                    </div>
-                </div>
-                <br>
-
             </div>
         </div>
-    </div>
- 
-    <!-- End Weather Container -->
 
+</div>
+  </section>
 
-
-
-    <!--Job-->
-   
-
-            <div class="columns ">
-                <div class="column is-offset-4">
-                    <div class="box">
-                        <div class="container  mb-6">
-                           <div class="columns">
-                            <div class="column">
-                                <p class="title">JOBS</p>
-                            </div>
-                            <div class="column">
-                                <input type="text" class="input" placeholder=" JOB TITLE ">
-                            </div>
-                            <div class="column">
-                                <input type="text" class="input" placeholder=" LOCATION ">
-                           </div>
-                           <div class="colummn">
-                            <input id="jobbtn" class="button auto is-rounded mt-3" type="submit" >
-                           </div>
-                        </div>
-                    <div class="notification ">
-                        <div class="box ">
-                        <div class="media-content">
-                            <div class="content">
-                             <p><strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
-                                <br>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
-                              </p>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-            </div>
-
-  
-   
-    <!--housing--> 
-     
-            <div class="columns is-three-quarters ">
-                <div class="column ">
-
-        </div>
-    </section>
-
-    <!--housing-->
-    <section id="housingContainer" class="section mb-6">
-        <div class="container">
-            <div class="columns ">
-                <div class="column is-three-quarters is-offset-4">
-
-                    <div class="box">
-                        <div class="container  mb-6">
-                           <div class="columns">
-                            <div class="column">
-                                <p class="title">Housing</p>
-                            </div>
-                            <div class="column">
-                                <input type="text" class="input" placeholder=" LOCATION ">
-                           </div>
-                           <div class="colummn">
-                            <input id="housingbtn" class="button auto is-rounded mt-3" type="submit" >
-                           </div>
-                        </div>
-                    <div class="notification ">
-                        <div class="box ">
-                        <div class="media-content">
-                            <div class="content">
-                             <p><strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
-                                <br>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
-                              </p>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-            </div>
-      
-   </div>
-   
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"
     integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="

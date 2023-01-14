@@ -68,7 +68,7 @@ colaAPI();
 
 
 
-// Toggles Jobs Container Visibility
+// Toggles Jobs Container Visibility on nav link click
 function showJobs() {
   $("#navJobs").on("click", function(){
     $("#jobsContainer").toggleClass("is-hidden");
@@ -76,3 +76,13 @@ function showJobs() {
 }
 
 showJobs();
+
+
+// Toggles Housing Container Visibilty on nav link click
+function showHousing() {
+  $("#navHousing").on("click", function(){
+    $("#housingContainer").toggleClass("is-hidden");
+  });
+}
+
+showHousing();

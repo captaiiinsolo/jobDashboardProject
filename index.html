@@ -12,7 +12,7 @@
     <title>Full Spectrum Job Board</title>
 
 </head>
-<body>
+<div>
 
     <!-- Hero Section with Nav Items and NavBrand -->
     <section class="hero is-medium has-background-dark">
@@ -53,11 +53,39 @@
     <!-- End Hero Section -->
 
     <!-- Weather Container  -->
-    <div class="columns">
+    <!-- Current weather -->
+    <!-- 5day forecast-->
+   <div class="columns">
         <div class="column is-one-quarter">
             <h3>Search for Job</h3>
             <div class="box">
                 <input class="input" type="text" placeholder="San Francisco">
+
+                    <div class="column is-one-quarter">
+                        <div id="current-city" class="box">
+                             <h3>City Name </h3>
+                             <br>
+                                <h4 class="card-title"> Date: </h4>
+                                <p class="card-text"> Temperature: </p>
+                                <p class="card-text"> Humidity: </p>
+                        </div>
+                        <div class="title" id="currentWeather"></div>
+                    </div>
+                    <div class="column is-one-quarter">
+                        <div id="fiveDay" class="box">
+                            <h3>5day Forecast</h3>
+                            <br>
+            
+                            <div class="row" id="5d-forecast">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4> day1</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 <div class="input-btn">
                     <button class="button is-primary is-outlined" type="button" id="search-weather-btn"> Search </button>
                 </div>
@@ -147,20 +175,21 @@
                     </div>
                 </div>
                 <br>
+
             </div>
         </div>
     </div>
-
+ 
     <!-- End Weather Container -->
 
 
 
 
     <!--Job-->
-    <section id="jobsContainer" class="section mb-6">
-        <div class="container">
+   
+
             <div class="columns ">
-                <div class="column is-three-quarters is-offset-4">
+                <div class="column is-offset-4">
                     <div class="box">
                         <div class="container  mb-6">
                            <div class="columns">
@@ -191,6 +220,14 @@
                     </div>
                 </div>
             </div>
+
+  
+   
+    <!--housing--> 
+     
+            <div class="columns is-three-quarters ">
+                <div class="column ">
+
         </div>
     </section>
 
@@ -199,6 +236,7 @@
         <div class="container">
             <div class="columns ">
                 <div class="column is-three-quarters is-offset-4">
+
                     <div class="box">
                         <div class="container  mb-6">
                            <div class="columns">
@@ -226,12 +264,9 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-
-
-
+      
+   </div>
+   
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"
     integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="

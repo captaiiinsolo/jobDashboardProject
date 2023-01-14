@@ -38,6 +38,16 @@ document.querySelector("#jobbtn").addEventListener("click",function(event){
 alert(event)
 })
 
+
+
+// this function will be populating the job results query.
+var jobresults = document.querySelector("#jobresults");
+
+function jobresults(result) {
+  console.log()
+  
+}
+
 // Calls the adzuna job board API
 function getJobsAPI() {
   var appID = "a1161bda";
@@ -54,7 +64,7 @@ function getJobsAPI() {
 }
 
 
-//getJobsAPI();
+getJobsAPI();
 
 
 document.querySelector("#housingbtn").addEventListener("click",function(event){

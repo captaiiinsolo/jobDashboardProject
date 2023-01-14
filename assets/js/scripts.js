@@ -38,9 +38,6 @@ document.querySelector("#jobbtn").addEventListener("click",function(event){
 alert(event)
 })
 
-
-
-
 // Calls the adzuna job board API
 function getJobsAPI() {
   var appID = "a1161bda";
@@ -59,6 +56,14 @@ function getJobsAPI() {
 
 //getJobsAPI();
 
+
+document.querySelector("#housingbtn").addEventListener("click",function(event){
+  event.preventDefault()
+alert(event)
+
+})
+
+// Calls cola data USA API
 function colaAPI(){
   var colaURL = "https://datausa.io/api/data?drilldowns=Place&measures=Population&year=latest";
 
@@ -72,4 +77,4 @@ function colaAPI(){
 
 }             
 
-colaAPI();
+//colaAPI();

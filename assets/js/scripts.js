@@ -32,6 +32,14 @@ function getAccuWeatherAPI() {
 //getAccuWeatherAPI();
 
 
+//listens for jobs search click
+document.querySelector("#jobbtn").addEventListener("click",function(event){
+  event.preventDefault()
+alert(event)
+})
+
+
+
 
 // Calls the adzuna job board API
 function getJobsAPI() {

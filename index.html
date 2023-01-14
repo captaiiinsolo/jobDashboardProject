@@ -60,7 +60,8 @@
                     <div class="field">
                         <label class="label"></label>
                         <div class="control">
-                            <input id="userInput" type="text" class="input" placeholder="Enter Text">
+                            <h1> Weather </h1>
+                            <input id="userInput" type="text" class="input" placeholder="Enter city">
                         </div>
                         <div class="mt-4">
                             <button id="searchBtn" class="button is-info is-fullwidth">Search</button>
@@ -72,6 +73,17 @@
                 <div class="columns mt-5">
                     <div class="column">
                         <!-- Start current Forecast -->
+                        <div class="box" id="current-city" >
+                            <h2 id="city-info"> City Information</h2>
+                            <br>
+                            <p class="temp-conditions"> Temperature:</p>
+                            <br>
+                            <p class="temp-conditions"> Humidity:</p>
+                            <br>
+                            <p class="temp-conditions"> Wind Speed: </p>
+                            <br>
+                            <p> UX Index: </p>
+                        </div>
                     </div>
                 </div>
 
@@ -124,7 +136,7 @@
                             <div class="container has-text-left">
                                     <div class="columns ">
                                         <div class="column">
-                            
+
                                             <div class="box">
                                                 <div class="container  mb-6">
                                                    <div class="columns">

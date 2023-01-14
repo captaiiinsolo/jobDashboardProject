@@ -75,7 +75,7 @@ function showJobs() {
   });
 }
 
-showJobs();
+
 
 
 // Toggles Housing Container Visibilty on nav link click
@@ -85,4 +85,16 @@ function showHousing() {
   });
 }
 
-showHousing();
+// Runs the following functions on document load
+$(document).ready(function() {
+
+  // Check for click events on the navbar burger icon
+  $(".navbar-burger").click(function() {
+
+      // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+      $(".navbar-burger").toggleClass("is-active");
+      $(".navbar-menu").toggleClass("is-active");
+
+  });
+
+});

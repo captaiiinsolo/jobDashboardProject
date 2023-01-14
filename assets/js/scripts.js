@@ -87,6 +87,44 @@ function colaAPI(){
 
 }
 
+
+
+colaAPI();
+
+
+
+// Toggles Jobs Container Visibility on nav link click
+function showJobs() {
+  $("#navJobs").on("click", function(){
+    $("#jobsContainer").toggleClass("is-hidden");
+  });
+}
+
+
+
+
+// Toggles Housing Container Visibilty on nav link click
+function showHousing() {
+  $("#navHousing").on("click", function(){
+    $("#housingContainer").toggleClass("is-hidden");
+  });
+}
+
+// Runs the following functions on document load
+$(document).ready(function() {
+
+  // Check for click events on the navbar burger icon
+  $(".navbar-burger").click(function() {
+
+      // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+      $(".navbar-burger").toggleClass("is-active");
+      $(".navbar-menu").toggleClass("is-active");
+
+  });
+
+});
+
 //colaAPI();
+
 
 // colaAPI();

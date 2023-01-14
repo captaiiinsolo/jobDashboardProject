@@ -12,7 +12,7 @@ function getAccuWeatherAPI() {
     console.log(data);
     console.log(data[0].Key); //Logs the city key we need to make other requests using Accuweathers other APIs
 
-    var cityKey = data[0].Key; 
+    var cityKey = data[0].Key;
 
     var cityKey = data[0].Key; // 347629 is the value of data[0].Key but console says its not defined.
 
@@ -24,12 +24,12 @@ function getAccuWeatherAPI() {
     console.log(data);
    });
 
-   }); 
+   });
 
-   
+
 }
 
-//getAccuWeatherAPI();
+getAccuWeatherAPI();
 
 
 
@@ -62,6 +62,6 @@ function colaAPI(){
     console.log(colaData);
   })
 
-}             
+}
 
-colaAPI();
+// colaAPI();

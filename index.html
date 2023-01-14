@@ -20,7 +20,7 @@
             <nav class="navbar">
                 <div class="container">
                     <div class="navbar-brand">
-                        <a href="#" class="navbar-item">
+                        <a class="navbar-item">
                             <img src="./assets/images/Asset 1.png" alt="Full Spectrum">
                         </a>
                         <span class="navbar-burger" data-target="navbarMenuHeroA">
@@ -33,10 +33,10 @@
 
                     <div id="navbarMenuHeroA" class="navbar-menu">
                         <div class="navbar-end">
-                            <a class="navbar-item is-active">Home</a>
-                            <a class="navbar-item">Jobs</a>
-                            <a class="navbar-item">Weather</a>
-                            <a class="navbar-item">Housing</a>
+                            <a id="navHome" href="#" class="navbar-item">Home</a>
+                            <a id="navWeather" href="#" class="navbar-item">Weather</a>
+                            <a id="navJobs" href="#jobsContainer" class="navbar-item">Jobs</a>
+                            <a id="navHousing" href="#housingContainer" class="navbar-item">Housing</a>
                         </div>
                     </div>
                 </div>
@@ -46,7 +46,7 @@
         <div class="hero-body">
             <div class="container has-text-centered">
                 <img src="./assets/images/Asset 1.png" alt="Full Spectrum">
-                <p class="subtitle">Your one stop shop for Jobs, Weather, and Housing.</p>
+                <p class="subtitle">Your one stop shop for Weather, Jobs, and Housing.</p>
             </div>
         </div>
     </section>
@@ -66,7 +66,7 @@
 
 
     <!--Job-->
-    <section class="section mb-6">
+    <section id="jobsContainer" class="section mb-6">
         <div class="container">
             <div class="columns ">
                 <div class="column is-three-quarters is-offset-4">
@@ -104,7 +104,7 @@
     </section>
 
     <!--housing--> 
-    <section class="section mb-6">
+    <section id="housingContainer" class="section mb-6">
         <div class="container">
             <div class="columns ">
                 <div class="column is-three-quarters is-offset-4">

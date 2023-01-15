@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
     <title>Full Spectrum Job Board</title>
 
+    <!-- Parsely.js CSS -->
+    <link rel="stylesheet" href="https://parsleyjs.org/src/parsley.css">
+
 </head>
 
     <!-- Hero Section with Nav Items and NavBrand -->
@@ -55,16 +58,24 @@
     <section class="m-6">
         <div class="columns">
             <div class="column is-one-third">
+
+                <!-- Parsely Callout for form validation -->
+                <div class="bs-callout bs-callout-warning is-hidden">
+                    <h4>Oh snap!</h4>
+                    <p>Please enter a US City</p>
+                  </div>
+
+
                 <!-- City Search -->
                 <form id="userCitySearch" action="" class="box">
                     <div class="field">
                         <label class="label"></label>
                         <div class="control">
                             <h1> Weather </h1>
-                            <input id="userInput" type="text" class="input" placeholder="Enter city">
+                            <input id="userInput" type="text" class="input" placeholder="Enter city" data-parsley-validate="" data-parsley-length="[3, 30]" required="">
                         </div>
                         <div class="mt-4">
-                            <button id="searchBtn" class="button is-info is-fullwidth">Search</button>
+                            <input id="searchBtn" type="submit" class="button is-info is-fullwidth" value="Search">
                         </div>
                     </div>
                 </form>
@@ -250,6 +261,10 @@
     integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
     crossorigin="anonymous"></script>
 
+    <!-- Parsely.js -->
+    <script src="https://parsleyjs.org/dist/parsley.js"></script>
+
+    <!-- Personal Scripts -->
     <script src="./assets/js/scripts.js"></script>
 
 

@@ -16,7 +16,7 @@ function getAccuWeatherAPI() {
 
     var cityKey = dataRequest[0].Key; // 347629 is the value of data[0].Key but console says its not defined.
 
-    fetch("http://dataservice.accuweather.com/forecasts/v1/daily/1day/" + cityKey + "?apikey=" + APIKey)
+    fetch("http://dataservice.accuweather.com/forecasts/v1/daily/5day/" + cityKey + "?apikey=" + APIKey)
    .then(function(response) {
     return response.json();
    })
@@ -27,11 +27,12 @@ function getAccuWeatherAPI() {
    });
 
 }
-
 getAccuWeatherAPI();
-document.querySelector("#searchBtn").addEventListener("click", function(event){
-  event.preventDefault()
-  alert(event)
+
+// Click search button functionality
+$(document).on("submit", function(clickCity){
+  clickCity.preventDefault();
+  console.log(clickCity)
 })
 
 

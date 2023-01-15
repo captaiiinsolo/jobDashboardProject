@@ -20,8 +20,8 @@ function getAccuWeatherAPI() {
    .then(function(response) {
     return response.json();
    })
-   .then(function(data) {
-    console.log(data);
+   .then(function(weatherData) {
+    console.log(weatherData);
    });
 
    });
@@ -29,22 +29,34 @@ function getAccuWeatherAPI() {
 
 }
 
-//getAccuWeatherAPI();
+getAccuWeatherAPI();
 
 
 //listens for jobs search click
 document.querySelector("#jobbtn").addEventListener("click",function(event){
+
+  event.preventDefault()
+alert(event)
+});
+
   event.preventDefault();
   alert(event);
 });
 
 
+
 // this function will be populating the job results query.
 //var jobresults = document.querySelector("#jobresults");
+
+
+function jobresults(result) {
+console.log()
+}
 
 //function jobresults(result) 
 //console.log()
  
+
 
 // Calls the adzuna job board API
 function getJobsAPI() {
@@ -56,13 +68,11 @@ function getJobsAPI() {
       .then(function(response) {
       return response.json();
       })
-      .then(function(data) {
-      console.log(data);
+      .then(function(jobsData) {
+      console.log(jobsData);
       });
 
 }
-
-
 getJobsAPI();
 
 
@@ -124,4 +134,9 @@ $(document).ready(function() {
 
   });
 
+solo/workingBranch
 });
+
+
+});
+

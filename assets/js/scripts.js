@@ -34,16 +34,29 @@ getAccuWeatherAPI();
 
 //listens for jobs search click
 document.querySelector("#jobbtn").addEventListener("click",function(event){
+
   event.preventDefault()
 alert(event)
 });
 
+  event.preventDefault();
+  alert(event);
+});
+
+
+
 // this function will be populating the job results query.
-var jobresults = document.querySelector("#jobresults");
+//var jobresults = document.querySelector("#jobresults");
+
 
 function jobresults(result) {
 console.log()
 }
+
+//function jobresults(result) 
+//console.log()
+ 
+
 
 // Calls the adzuna job board API
 function getJobsAPI() {
@@ -121,6 +134,9 @@ $(document).ready(function() {
 
   });
 
+solo/workingBranch
 });
 
+
+});
 

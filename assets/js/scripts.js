@@ -108,9 +108,6 @@ function showJobs() {
   });
 }
 
-
-
-
 // Toggles Housing Container Visibilty on nav link click
 function showHousing() {
   $("#navHousing").on("click", function(){
@@ -135,12 +132,17 @@ $(document).ready(function() {
 
 });
 
+
+
+// Weather Button Parsely.js validation function
 $(function () {
   $('#userCitySearch').parsley().on('field:validated', function() {
     var ok = $('.parsley-error').length === 0;
-    $(".bs-callout-warning").toggleClass('is-hidden', ok);
+    $("#weatherModal").toggleClass('is-active hidden', !ok);
   })
   .on('form:submit', function() {
-    return false; // Don't submit form for this demo
+    return; // Get AccuWeatherAPI function goes here. It will run on form submit.
   });
 });
+
+

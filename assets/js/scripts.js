@@ -29,15 +29,9 @@ function getAccuWeatherAPI() {
 
 }
 
-getAccuWeatherAPI();
+//getAccuWeatherAPI();
 
 
-//listens for jobs search click
-document.querySelector("#jobbtn").addEventListener("click",function(event){
-
-  event.preventDefault();
-  alert(event);
-});
 
 
 
@@ -45,19 +39,23 @@ document.querySelector("#jobbtn").addEventListener("click",function(event){
 
 
 // this function will be populating the job results query.
-//var jobresults = document.querySelector("#jobresults");
+function populateresults(result){
+  console.log(result[0])
 
 
-// function jobresults(result) {
-// console.log()
-// }
+for (var i = 1; i <= 25;){
+  $("#searchCity"+i+" > .location").text(result(i).date.toString().substring(0,16))
 
-// //function jobresults(result) 
-// //console.log()
+}
+}
+
+
  
 
 
-// Calls the adzuna job board API
+// Calls the adzuna jobboard API
+
+
 function getJobsAPI() {
   var appID = "a1161bda";
   var jobsAPIKey = "3cbd548d24f2c7935ae4266b18c9a165";
@@ -74,30 +72,37 @@ function getJobsAPI() {
 }
 getJobsAPI();
 
+//listens for jobs search click
+document.querySelector("#jobbtn").addEventListener("click",function(event){
+  event.preventDefault();
+  var search=$("#searchCity").val();
+ 
+ });
+ 
 
-document.querySelector("#housingbtn").addEventListener("click",function(event){
-  event.preventDefault()
-alert(event)
 
-})
+
 
 // Calls cola data USA API
 function colaAPI(){
   var colaURL = "https://datausa.io/api/data?drilldowns=Place&measures=Population&year=latest";
 
   fetch(colaURL)
-  .then(function(respons){
-    return respons.json();
+  .then(function(response){
+    return response.json();
   })
   .then(function(colaData){
     console.log(colaData);
   })
 
 }
+document.querySelector("#housingbtn").addEventListener("click",function(event){
+  event.preventDefault()
+  alert(event)
 
+})
 
-
-colaAPI();
+//colaAPI();
 
 
 

@@ -35,13 +35,12 @@ getAccuWeatherAPI();
 //listens for jobs search click
 document.querySelector("#jobbtn").addEventListener("click",function(event){
 
-  event.preventDefault()
-alert(event)
-});
-
   event.preventDefault();
   alert(event);
 });
+
+
+
 
 
 
@@ -49,12 +48,12 @@ alert(event)
 //var jobresults = document.querySelector("#jobresults");
 
 
-function jobresults(result) {
-console.log()
-}
+// function jobresults(result) {
+// console.log()
+// }
 
-//function jobresults(result) 
-//console.log()
+// //function jobresults(result) 
+// //console.log()
  
 
 
@@ -134,9 +133,6 @@ $(document).ready(function() {
 
   });
 
-solo/workingBranch
 });
 
-
-});
 

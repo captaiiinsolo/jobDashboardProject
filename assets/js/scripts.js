@@ -112,7 +112,11 @@ function colaAPI(){
 }
 colaAPI();
 
-
+function showWeather() {
+  $("#navWeather").on("click", function() {
+    $("#weatherContainer").toggleClass("is-hidden");
+  });
+}
 
 // Toggles Jobs Container Visibility on nav link click
 function showJobs() {
@@ -120,9 +124,6 @@ function showJobs() {
     $("#jobsContainer").toggleClass("is-hidden");
   });
 }
-
-
-
 
 // Toggles Housing Container Visibilty on nav link click
 function showHousing() {
@@ -134,6 +135,7 @@ function showHousing() {
 // Runs the following functions on document load
 $(document).ready(function() {
 
+  showWeather();
   showJobs();
   showHousing();
 
@@ -148,4 +150,22 @@ $(document).ready(function() {
 
 });
 
+ // Weather Modal Close on click
+$(".modal-close").on("click", function() {
+  $("#weatherModal").removeClass("is-active");
+});
 
+
+// Weather Button Parsely.js validation function
+$(function () {
+  $('#userCitySearch').parsley().on('field:validated', function() {
+    var ok = $('.parsley-error').length === 0;
+    $("#weatherModal").toggleClass('is-active hidden', !ok); 
+  })
+  .on('form:submit', function() {
+    return; // Get AccuWeatherAPI function goes here. It will run on form submit.
+  });
+});
+
+// Intro.Js tour start
+introJs().start();

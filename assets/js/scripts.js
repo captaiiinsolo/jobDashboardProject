@@ -27,11 +27,17 @@ function getAccuWeatherAPI() {
    .then(function(response) {
     return response.json();
    })
+
    .then(function(data5day) {
     console.log(data5day);
     console.log(data5day.DailyForecasts);
     console.log(data5day.Headline);
     console.log(data5day.DailyForecasts.length)
+
+   .then(function(weatherData) {
+    console.log(weatherData);
+   });
+
 
     $("#day1").append(data5day.DailyForecasts[0].Date);
     $("#day2").append(data5day.DailyForecasts[1].Date);
@@ -48,6 +54,8 @@ function getAccuWeatherAPI() {
      if (i == data5day.DailyForecast[i].length){
       $("#day1").append(data5day.DailyForecasts[i].Date);
      };
+
+// this function will be populating the job results query.
 
 
 
@@ -87,6 +95,55 @@ $(document).on("submit", function(clickCity){
 //   var jobsAPIKey = "3cbd548d24f2c7935ae4266b18c9a165";
 //   var jobsURL = "https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=" + appID + "&app_key=" + jobsAPIKey + "&results_per_page=25&what=software%20engineer";
 
+// Calls the adzuna jobboard API
+//listens for jobs search click
+//var userInput= document.getElementById('userInput');
+//var userCitySearch = document.getElementById('userCitySearch');
+
+
+document.querySelector("#jobbtn").addEventListener("click",function(event){
+event.preventDefault();
+
+console.log(document.getElementById('userCitySearch').value + document.getElementById('userInput').value)
+ });
+
+
+
+function getJobsAPI() {
+  var appID = "a1161bda";
+  var jobsAPIKey = "3cbd548d24f2c7935ae4266b18c9a165";
+  var jobsURL = "https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=" + appID + "&app_key=" + jobsAPIKey + "&results_per_page=25&what=software%20engineer";
+
+fetch(jobsURL)
+.then(function(response) {
+if(!response.ok){
+throw response.json();
+}
+return response.json();
+ })
+ .then(function(jobsData){
+
+ console.log(jobsData);
+ console.log(jobsData.results[0]);
+ console.log(jobsData.results[0].location.display_name);
+ 
+
+for (var i = 1; i <= 25; i++) {
+  $("#results").append($("<tr><td>" + jobsData.results[i].title + "</td><td>" + jobsData.results[i].description + "</td><td>" + jobsData.results[i].location.display_name + "</td><td>$" + jobsData.results[i].salary_min + "-$" + jobsData.results[i].salary_max + "</td></tr>"));
+}
+});
+      
+};
+//getJobsAPI();
+
+
+ 
+
+document.querySelector("#housingbtn").addEventListener("click",function(event){
+  event.preventDefault()
+  alert(event)
+
+
 //   fetch(jobsURL)
 //       .then(function(response) {
 //       return response.json();
@@ -94,6 +151,7 @@ $(document).on("submit", function(clickCity){
 //       .then(function(data) {
 //       console.log(data);
 //       });
+
 
 // }
 
@@ -119,11 +177,56 @@ $(document).on("submit", function(clickCity){
 //     console.log(colaData);
 //   })
 
+// Calls cola data USA API
+function colaAPI(){
+ 
+  var colaURL = "https://datausa.io/api/data?drilldowns=Place&measures=Population&year=latest";
+
+  fetch(colaURL)
+  .then(function(response){
+  if(!response.ok){
+  throw response.json();
+ }
+
+  return response.json();
+  })
+  .then(function(coladata){
+    //console.log(coladata);
+    console.log(coladata.data[0]);
+   // console.log(coladata.results[0].Population);
+   // console.log(coladata.results[0].Year);
+
+ //for (var i = 1; i=1; i++){
+ // $("#housingresults").append($(`<tr><td>${coladata.data[i].Place}</td><td>${coladata.data[i].Population}</td><td>\$${coladata.data[i].Year}</td></tr>`));
+}
+   
+ });
+  
+}
+colaAPI();
+
+function showWeather() {
+  $("#navWeather").on("click", function() {
+    $("#weatherContainer").toggleClass("is-hidden");
+  });
+}
+
+
 // }
 
 
 
+
 // //colaAPI();
+
+
+// Toggles Housing Container Visibilty on nav link click
+function showHousing() {
+  $("#navHousing").on("click", function(){
+    $("#housingContainer").toggleClass("is-hidden");
+  });
+}
+
 
 
 
@@ -133,6 +236,11 @@ $(document).on("submit", function(clickCity){
 //     $("#jobsContainer").toggleClass("is-hidden");
 //   });
 // }
+
+  showWeather();
+  showJobs();
+  showHousing();
+
 
 
 
@@ -159,4 +267,26 @@ $(document).on("submit", function(clickCity){
 
 //   });
 
+
 // });
+
+ // Weather Modal Close on click
+$(".modal-close").on("click", function() {
+  $("#weatherModal").removeClass("is-active");
+});
+
+
+// Weather Button Parsely.js validation function
+$(function () {
+  $('#userCitySearch').parsley().on('field:validated', function() {
+    var ok = $('.parsley-error').length === 0;
+    $("#weatherModal").toggleClass('is-active hidden', !ok); 
+  })
+  .on('form:submit', function() {
+    return; // Get AccuWeatherAPI function goes here. It will run on form submit.
+  });
+});
+
+// Intro.Js tour start
+introJs().start();
+

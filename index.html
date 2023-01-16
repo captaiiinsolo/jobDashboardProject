@@ -11,6 +11,12 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
     <title>Full Spectrum Job Board</title>
 
+    <!-- Parsely.js CSS -->
+    <link rel="stylesheet" href="https://parsleyjs.org/src/parsley.css">
+
+    <!-- intro.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intro.js@6.0.0/minified/introjs.min.css">
+
 </head>
 
     <!-- Hero Section with Nav Items and NavBrand -->
@@ -18,7 +24,7 @@
         <div class="hero-head">
             <nav class="navbar is-dark">
                 <div class="container">
-                    <div class="navbar-brand">
+                    <div class="navbar-brand" data-title="Welcome to Full Spectrum!" data-intro="Please follow these instructions to use Full Spectrum to its maximum potential." data-step="1 of 8" >
                         <a class="navbar-item">
                             <img src="./assets/images/Asset 1.png" alt="Full Spectrum">
                         </a>
@@ -33,9 +39,9 @@
                     <div id="navbarMenu" class="navbar-menu">
                         <div class="navbar-end">
                             <a id="navHome" href="#" class="navbar-item">Home</a>
-                            <a id="navWeather" href="#" class="navbar-item">Weather</a>
-                            <a id="navJobs" href="#jobsContainer" class="navbar-item">Jobs</a>
-                            <a id="navHousing" href="#housingContainer" class="navbar-item">Housing</a>
+                            <a id="navWeather" href="#weatherContainer" class="navbar-item" data-intro="Click here to toggle the visibility of the Weather section." data-step="2 of 8">Weather</a>
+                            <a id="navJobs" href="#jobsContainer" class="navbar-item" data-intro="Click here to toggle the visibility of the Jobs section." data-step="3 of 8">Jobs</a>
+                            <a id="navHousing" href="#housingContainer" class="navbar-item" data-intro="Click here to toggle the visibility of the Housing section." data-step="4 of 8">Housing</a>
                         </div>
                     </div>
                 </div>
@@ -44,7 +50,7 @@
 
         <div class="hero-body">
             <div class="container has-text-centered">
-                <img src="./assets/images/Asset 1.png" alt="Full Spectrum">
+                <img data-step="8 of 8" data-intro="Happy Searching!" src="./assets/images/Asset 1.png" alt="Full Spectrum">
                 <p class="subtitle has-text-white">Your one stop shop for Weather, Jobs, and Housing.</p>
             </div>
         </div>
@@ -54,17 +60,34 @@
     <!-- Weather Section -->
     <section class="m-6">
         <div class="columns">
-            <div class="column is-one-third">
+            <div id="weatherContainer" class="column is-one-third">
+
+                <!-- Parsely Callout for form validation -->
+                <div id="weatherModal" class="modal bs-callout bs-callout-warning hidden">
+                    <div class="modal-background"></div>
+                    <div class="modal-content">
+                        <div class="box">
+                            <div>
+                                <p class="title">Oh snap!</p>
+                                <p class="sub-title">Please enter a US City</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="modal-close is-large" aria-label="close"></button>
+                </div>
+                   
+
+
                 <!-- City Search -->
-                <form id="userCitySearch" action="" class="box">
+                <form id="userCitySearch" action="" class="box" data-intro="This is the weather section. Search by city to get a 5 day forecast." data-step="5 of 8">
                     <div class="field">
                         <label class="label"></label>
                         <div class="control">
                             <h1> Weather </h1>
-                            <input id="userInput" type="text" class="input" placeholder="Enter city">
+                            <input id="userInput" type="text" class="input" placeholder="Enter city" data-parsley-length="[3, 30]" required="">
                         </div>
                         <div class="mt-4">
-                            <button id="searchBtn" class="button is-info is-fullwidth">Search</button>
+                            <input id="searchBtn" type="submit" class="button is-info is-fullwidth js-modal-trigger" data-target="weatherModal" value="Search">
                         </div>
                     </div>
                 </form>
@@ -149,17 +172,17 @@
                 <div class="container has-text-left">
                         <div class="columns">
                             <div class="column">
-                                <div class="box">
-                                    <div class="container  mb-6">
+                                <div id="jobsContainer" class="box" data-intro="This is the is the jobs section. Here you can search for jobs by their title, location, or both. Job listings will populate below." data-step="6 of 8">
+                                    <div class="container mb-6">
                                        <div class="columns">
                                         <div class="column">
                                             <p class="title">JOBS</p>
                                         </div>
                                         <div class="column">
-                                            <input type="text" class="input" placeholder=" JOB TITLE ">
+                                            <input id= "userInput" type="text" class="input" placeholder=" JOB TITLE ">
                                         </div>
                                         <div class="column">
-                                            <input type="text" class="input" placeholder=" LOCATION ">
+                                            <input id= "userCitySearch" type="text" class="input" placeholder=" LOCATION ">
                                        </div>
                                        <div class="colummn">
                                         <input id="jobbtn" class="button auto is-rounded mt-3" type="submit" >
@@ -168,11 +191,16 @@
                                 <div class="notification ">
                                     <div class="box ">
                                     <div class="media-content">
-                                        <div class="content">
-                                         <p><strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
-                                            <br>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
-                                          </p>
+                                        <div id="job" class="content">
+                                            <div class="col-12 col-md-9 p-3 text-light"></div>
+                                         <table id="results">
+                                            <tr>
+                                                <th>Title</th>
+                                                <th>description</th>
+                                                <th>Location</th>
+                                                <th>Salary</th>
+                                            </tr>
+                                         </table>
                                         </div>
                                     </div>
                                 </div>
@@ -182,12 +210,12 @@
 
                         <div class="columns">
                             <div class="container has-text-left">
-                                    <div class="columns ">
+                                    <div class="columns">
                                         <div class="column">
-
+                                            <div id="housingContainer" class="box" data-intro="This is the is the Housing section. Search by city to receive housing statistics for that area" data-step="7 of 8">
+                                            <div id="housingContainer" class="box">
                                             <div class="box">
                                                 <div class="container  mb-6">
-                                                   <div class="columns">
                                                     <div class="column">
                                                         <p class="title">Housing</p>
                                                     </div>
@@ -202,10 +230,13 @@
                                                 <div class="box ">
                                                 <div class="media-content">
                                                     <div class="content">
-                                                     <p><strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
-                                                        <br>
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
-                                                      </p>
+                                                        <table id="housingresults">
+                                                            <tr>
+                                                                <th>Place</th>
+                                                                <th>Population</th>
+                                                                <th>Year</th>
+                                                            </tr>
+                                                         </table>
                                                     </div>
                                                 </div>
                                             </div>
@@ -232,7 +263,15 @@
     integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
     crossorigin="anonymous"></script>
 
+    <!-- Parsely.js -->
+    <script src="https://parsleyjs.org/dist/parsley.js"></script>
+
+    <!-- intro.js -->
+    <script src="https://cdn.jsdelivr.net/npm/intro.js@6.0.0/minified/intro.min.js"></script>
+
+    <!-- Personal Scripts -->
     <script src="./assets/js/scripts.js"></script>
+    
 
 
 </body>

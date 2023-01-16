@@ -9,18 +9,19 @@
 - Code Snippets
 - Resources
 - Credits
-- Learning Points 
+- Learning Points
 
 
 # Descriptiom
 
-# Installtion Instructions
-
+# Installation Instructions
+    // Recording of the tour website
 # Github Accounts
 
 # Contacts
 
 # Code Snippets
+// Solomon code snippets 
 
 # Resources
 

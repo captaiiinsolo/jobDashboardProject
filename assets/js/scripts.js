@@ -3,11 +3,6 @@ var searchCity = "San Francisco";
 var APIKey = "G7TFrvoMDfSH4fn8av5CZDJviR257GdG";
 var requestURL = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=" + APIKey + "&q=" + searchCity;
 
-// var cityKey = dataRequest[0].Key;
-
-// var cityKey = dataRequest[0].Key; // 347629 is the value of data[0].Key but console says its not defined
-
-
 
 
 // Calls the AccuWeather API (Nested Promise - First call to Location API to get location Key. Second Call to daily forecast API for weather information)
@@ -34,11 +29,29 @@ function getAccuWeatherAPI() {
    })
    .then(function(data5day) {
     console.log(data5day);
-    console.log(data5day.DailyForecasts[1]);
-    console.log(data5day.Headline.Text);
-   });
+    console.log(data5day.DailyForecasts);
+    console.log(data5day.Headline);
+    // console.log(data5day.DailyForecasts.length)
 
-   });
+    $("#day1").append(data5day.DailyForecasts[0].Date);
+    $("#day2").append(data5day.DailyForecasts[1].Date);
+    $("#day3").append(data5day.DailyForecasts[2].Date);
+    $("#day4").append(data5day.DailyForecasts[3].Date);
+    $("#day5").append(data5day.DailyForecasts[4].Date);
+
+    // for (i = 0; i < data5day.DailyForecast[i].Date; i++) {
+    // console.log(data5day.DailyForecast[i].Date)
+    //  if (i == data5day.DailyForecast[i].Date){
+    //   $("#day1").append(data5day.DailyForecasts[0].Date);
+    //  }
+
+
+
+
+    // }
+  });
+
+  });
 
 }
 getAccuWeatherAPI();

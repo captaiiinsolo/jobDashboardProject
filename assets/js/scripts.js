@@ -99,7 +99,11 @@ function colaAPI(){
 
 colaAPI();
 
-
+function showWeather() {
+  $("#navWeather").on("click", function() {
+    $("#weatherContainer").toggleClass("is-hidden");
+  });
+}
 
 // Toggles Jobs Container Visibility on nav link click
 function showJobs() {
@@ -118,6 +122,7 @@ function showHousing() {
 // Runs the following functions on document load
 $(document).ready(function() {
 
+  showWeather();
   showJobs();
   showHousing();
 
@@ -149,3 +154,5 @@ $(function () {
   });
 });
 
+// Intro.Js tour start
+introJs().start();

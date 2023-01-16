@@ -14,6 +14,9 @@
     <!-- Parsely.js CSS -->
     <link rel="stylesheet" href="https://parsleyjs.org/src/parsley.css">
 
+    <!-- intro.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intro.js@6.0.0/minified/introjs.min.css">
+
 </head>
 
     <!-- Hero Section with Nav Items and NavBrand -->
@@ -21,7 +24,7 @@
         <div class="hero-head">
             <nav class="navbar is-dark">
                 <div class="container">
-                    <div class="navbar-brand">
+                    <div class="navbar-brand" data-title="Welcome to Full Spectrum!" data-intro="Please follow these instructions to use Full Spectrum to its full potential." >
                         <a class="navbar-item">
                             <img src="./assets/images/Asset 1.png" alt="Full Spectrum">
                         </a>
@@ -36,9 +39,9 @@
                     <div id="navbarMenu" class="navbar-menu">
                         <div class="navbar-end">
                             <a id="navHome" href="#" class="navbar-item">Home</a>
-                            <a id="navWeather" href="#" class="navbar-item">Weather</a>
-                            <a id="navJobs" href="#jobsContainer" class="navbar-item">Jobs</a>
-                            <a id="navHousing" href="#housingContainer" class="navbar-item">Housing</a>
+                            <a id="navWeather" href="#weatherContainer" class="navbar-item" data-intro="Click on Weather to unhide the weather section and start searching by City. Clicking again will hide the section.">Weather</a>
+                            <a id="navJobs" href="#jobsContainer" class="navbar-item" data-intro="Click on Jobs to unhide the weather section and start searching by City. Clicking again will hide the section.">Jobs</a>
+                            <a id="navHousing" href="#housingContainer" class="navbar-item" data-intro="Click on Housing to unhide the weather section and start searching by City. Clicking again will hide the section.">Housing</a>
                         </div>
                     </div>
                 </div>
@@ -46,7 +49,7 @@
         </div>
 
         <div class="hero-body">
-            <div class="container has-text-centered">
+            <div data-title="Welcome!" class="container has-text-centered">
                 <img src="./assets/images/Asset 1.png" alt="Full Spectrum">
                 <p class="subtitle has-text-white">Your one stop shop for Weather, Jobs, and Housing.</p>
             </div>
@@ -57,7 +60,7 @@
     <!-- Weather Section -->
     <section class="m-6">
         <div class="columns">
-            <div class="column is-one-third">
+            <div id="weatherContainer" class="column is-one-third">
 
                 <!-- Parsely Callout for form validation -->
                 <div id="weatherModal" class="modal bs-callout bs-callout-warning hidden">
@@ -272,6 +275,9 @@
 
     <!-- Parsely.js -->
     <script src="https://parsleyjs.org/dist/parsley.js"></script>
+
+    <!-- intro.js -->
+    <script src="https://cdn.jsdelivr.net/npm/intro.js@6.0.0/minified/intro.min.js"></script>
 
     <!-- Personal Scripts -->
     <script src="./assets/js/scripts.js"></script>

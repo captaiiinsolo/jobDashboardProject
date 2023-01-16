@@ -31,7 +31,7 @@ function getAccuWeatherAPI() {
     console.log(data5day);
     console.log(data5day.DailyForecasts);
     console.log(data5day.Headline);
-    // console.log(data5day.DailyForecasts.length)
+    console.log(data5day.DailyForecasts.length)
 
     $("#day1").append(data5day.DailyForecasts[0].Date);
     $("#day2").append(data5day.DailyForecasts[1].Date);
@@ -39,18 +39,20 @@ function getAccuWeatherAPI() {
     $("#day4").append(data5day.DailyForecasts[3].Date);
     $("#day5").append(data5day.DailyForecasts[4].Date);
 
-    // for (i = 0; i < data5day.DailyForecast[i].Date; i++) {
-    // console.log(data5day.DailyForecast[i].Date)
-    //  if (i == data5day.DailyForecast[i].Date){
-    //   $("#day1").append(data5day.DailyForecasts[0].Date);
-    //  }
+    $("#current-humdity").append(data5day.DailyForecasts[0].Day.IconPhrase);
 
 
 
+    for (i = 1; i < data5day.DailyForecast[i].length; i++) {
+    console.log(data5day.DailyForecast[i].Date)
+     if (i == data5day.DailyForecast[i].length){
+      $("#day1").append(data5day.DailyForecasts[i].Date);
+     };
 
-    // }
-  });
 
+
+    }
+   });
   });
 
 }

@@ -24,7 +24,7 @@
         <div class="hero-head">
             <nav class="navbar is-dark">
                 <div class="container">
-                    <div class="navbar-brand" data-title="Welcome to Full Spectrum!" data-intro="Please follow these instructions to use Full Spectrum to its maximum potential." >
+                    <div class="navbar-brand" data-title="Welcome to Full Spectrum!" data-intro="Please follow these instructions to use Full Spectrum to its maximum potential." data-step="1 of 8" >
                         <a class="navbar-item">
                             <img src="./assets/images/Asset 1.png" alt="Full Spectrum">
                         </a>
@@ -39,9 +39,9 @@
                     <div id="navbarMenu" class="navbar-menu">
                         <div class="navbar-end">
                             <a id="navHome" href="#" class="navbar-item">Home</a>
-                            <a id="navWeather" href="#weatherContainer" class="navbar-item" data-intro="Click on Weather to unhide the weather section and start searching by City. Clicking again will hide the section.">Weather</a>
-                            <a id="navJobs" href="#jobsContainer" class="navbar-item" data-intro="Click on Jobs to unhide the weather section and start searching by City. Clicking again will hide the section.">Jobs</a>
-                            <a id="navHousing" href="#housingContainer" class="navbar-item" data-intro="Click on Housing to unhide the weather section and start searching by City. Clicking again will hide the section.">Housing</a>
+                            <a id="navWeather" href="#weatherContainer" class="navbar-item" data-intro="Click here to toggle the visibility of the Weather section." data-step="2 of 8">Weather</a>
+                            <a id="navJobs" href="#jobsContainer" class="navbar-item" data-intro="Click here to toggle the visibility of the Jobs section." data-step="3 of 8">Jobs</a>
+                            <a id="navHousing" href="#housingContainer" class="navbar-item" data-intro="Click here to toggle the visibility of the Housing section." data-step="4 of 8">Housing</a>
                         </div>
                     </div>
                 </div>
@@ -49,8 +49,8 @@
         </div>
 
         <div class="hero-body">
-            <div data-title="Welcome!" class="container has-text-centered">
-                <img src="./assets/images/Asset 1.png" alt="Full Spectrum">
+            <div class="container has-text-centered">
+                <img data-step="8 of 8" data-intro="Happy Searching!" src="./assets/images/Asset 1.png" alt="Full Spectrum">
                 <p class="subtitle has-text-white">Your one stop shop for Weather, Jobs, and Housing.</p>
             </div>
         </div>
@@ -79,7 +79,7 @@
 
 
                 <!-- City Search -->
-                <form id="userCitySearch" action="" class="box" data-intro="This is the weather section. Search by city to get a 5 day forecast.">
+                <form id="userCitySearch" action="" class="box" data-intro="This is the weather section. Search by city to get a 5 day forecast." data-step="5 of 8">
                     <div class="field">
                         <label class="label"></label>
                         <div class="control">
@@ -186,7 +186,7 @@
                 <div class="container has-text-left">
                         <div class="columns">
                             <div class="column">
-                                <div id="jobsContainer" class="box">
+                                <div id="jobsContainer" class="box" data-intro="This is the is the jobs section. Here you can search for jobs by their title, location, or both. Job listings will populate below." data-step="6 of 8">
                                     <div class="container mb-6">
                                        <div class="columns">
                                         <div class="column">
@@ -223,7 +223,7 @@
                                         <div class="column">
 
                             
-                                            <div id="housingContainer" class="box">
+                                            <div id="housingContainer" class="box" data-intro="This is the is the Housing section. Search by city to receive housing statistics for that area" data-step="7 of 8">
 
 
                                             <div class="box">

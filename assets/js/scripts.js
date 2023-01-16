@@ -1,8 +1,20 @@
+// Variables
+var searchCity = "San Francisco";
+var APIKey = "G7TFrvoMDfSH4fn8av5CZDJviR257GdG";
+var requestURL = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=" + APIKey + "&q=" + searchCity;
+
+// var cityKey = dataRequest[0].Key;
+
+// var cityKey = dataRequest[0].Key; // 347629 is the value of data[0].Key but console says its not defined
+
+
+
+
 // Calls the AccuWeather API (Nested Promise - First call to Location API to get location Key. Second Call to daily forecast API for weather information)
 function getAccuWeatherAPI() {
-    var searchCity = "san diego";
-    var APIKey = "G7TFrvoMDfSH4fn8av5CZDJviR257GdG";
-    var requestURL = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=" + APIKey + "&q=" + searchCity;
+  // var searchCity = "san diego";
+  // var APIKey = "G7TFrvoMDfSH4fn8av5CZDJviR257GdG";
+  // var requestURL = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=" + APIKey + "&q=" + searchCity;
 
    fetch(requestURL)
    .then(function(response) {
@@ -20,8 +32,10 @@ function getAccuWeatherAPI() {
    .then(function(response) {
     return response.json();
    })
-   .then(function(data) {
-    console.log(data);
+   .then(function(data5day) {
+    console.log(data5day);
+    console.log(data5day.DailyForecasts[1]);
+    console.log(data5day.Headline.Text);
    });
 
    });
@@ -35,18 +49,6 @@ $(document).on("submit", function(clickCity){
   console.log(clickCity)
 })
 
-
-function get5Dforecast(forecastResponse){
-  var lat = forecastResponse[0].lat
-  var lon = forecastResponse[0].lon
-
-  console.log(forecastResponse[0].name);
-  console.log(lat);
-  console.log(lon);
-
-
-
-}
 
 
 

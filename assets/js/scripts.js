@@ -132,17 +132,20 @@ $(document).ready(function() {
 
 });
 
+ // Weather Modal Close on click
+$(".modal-close").on("click", function() {
+  $("#weatherModal").removeClass("is-active");
+});
 
 
 // Weather Button Parsely.js validation function
 $(function () {
   $('#userCitySearch').parsley().on('field:validated', function() {
     var ok = $('.parsley-error').length === 0;
-    $("#weatherModal").toggleClass('is-active hidden', !ok);
+    $("#weatherModal").toggleClass('is-active hidden', !ok); 
   })
   .on('form:submit', function() {
     return; // Get AccuWeatherAPI function goes here. It will run on form submit.
   });
 });
-
 

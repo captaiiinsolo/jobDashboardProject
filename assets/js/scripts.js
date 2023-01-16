@@ -31,13 +31,6 @@ function getAccuWeatherAPI() {
 
 //getAccuWeatherAPI();
 
-
-
-
-
-
-
-
 // this function will be populating the job results query.
 
 
@@ -77,12 +70,12 @@ return response.json();
 
 
 for (var i = 1; i <= 25; i++) {
-  $("#results").append($("<tr><td>" + jobsData.results[i].title + "</td><td>"+ jobsData.results[i].location.display_name + "</td><td>$" + jobsData.results[i].salary_min + "-$" + jobsData.results[i].salary_max + "</td></tr>")); 
+  $("#results").append($("<tr><td>" + jobsData.results[i].title + "</td><td>" + jobsData.results[i].description + "</td><td>" + jobsData.results[i].location.display_name + "</td><td>$" + jobsData.results[i].salary_min + "-$" + jobsData.results[i].salary_max + "</td></tr>"));
 }
 });
       
 };
-//getJobsAPI();
+getJobsAPI();
 
 
  
@@ -96,17 +89,27 @@ document.querySelector("#housingbtn").addEventListener("click",function(event){
 // Calls cola data USA API
 function colaAPI(){
  
-  var colaURL = "https://datausa.io/api/data?drilldowns=Place&measures=Population&year=latest"
+  var colaURL = "https://datausa.io/api/data?drilldowns=Place&measures=Population&year=latest";
 
   fetch(colaURL)
   .then(function(response){
+  if(!response.ok){
+  throw response.json();
+ }
+
     return response.json();
   })
   .then(function(coladata){
     console.log(coladata);
-    console.log(coladata.results[0]);
     console.log(coladata.results[0].Place);
+    console.log(coladata.results[0].Population);
+    console.log(coladata.results[0].Year);
+
+ for (var i = 0; i <= 25; i++) {
+  $("#housingresults").append($("<tr><td>" + coladata.results[i].Place + "</td><td>"+ coladata.results[i].Population + "</td><td>$" + coladata.results[i].Year + "</td></tr>"));
+}
    
+
   });
   
 }

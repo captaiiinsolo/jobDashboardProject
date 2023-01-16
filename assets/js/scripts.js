@@ -67,15 +67,13 @@ return response.json();
  console.log(jobsData.results[0].location.display_name);
  
 
-
-
 for (var i = 1; i <= 25; i++) {
   $("#results").append($("<tr><td>" + jobsData.results[i].title + "</td><td>" + jobsData.results[i].description + "</td><td>" + jobsData.results[i].location.display_name + "</td><td>$" + jobsData.results[i].salary_min + "-$" + jobsData.results[i].salary_max + "</td></tr>"));
 }
 });
       
 };
-getJobsAPI();
+//getJobsAPI();
 
 
  
@@ -97,20 +95,19 @@ function colaAPI(){
   throw response.json();
  }
 
-    return response.json();
+  return response.json();
   })
   .then(function(coladata){
-    console.log(coladata);
-    console.log(coladata.results[0].Place);
-    console.log(coladata.results[0].Population);
-    console.log(coladata.results[0].Year);
+    //console.log(coladata);
+    console.log(coladata.data[0]);
+   // console.log(coladata.results[0].Population);
+   // console.log(coladata.results[0].Year);
 
- for (var i = 0; i <= 25; i++) {
-  $("#housingresults").append($("<tr><td>" + coladata.results[i].Place + "</td><td>"+ coladata.results[i].Population + "</td><td>$" + coladata.results[i].Year + "</td></tr>"));
+ //for (var i = 1; i=1; i++){
+ // $("#housingresults").append($(`<tr><td>${coladata.data[i].Place}</td><td>${coladata.data[i].Population}</td><td>\$${coladata.data[i].Year}</td></tr>`));
 }
    
-
-  });
+ });
   
 }
 colaAPI();

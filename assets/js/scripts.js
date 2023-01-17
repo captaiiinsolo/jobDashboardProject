@@ -76,15 +76,18 @@ $(document).on("submit", function(clickCity){
 
 document.querySelector("#jobbtn").addEventListener("click",function(event){
 event.preventDefault();
-alert(event)
+console.log(userjobinput)
+getJobsAPI();
 });
 
-var userjobinput = $("#userjobinput").val();
+
 
 function getJobsAPI() {
   var appID = "a1161bda";
+  var userjobinput = $("#userjobinput").val();
+  var userJobCitySearch =$("#userJobCitySearch").val()
   var jobsAPIKey = "3cbd548d24f2c7935ae4266b18c9a165";
-  var jobsURL = "https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=" + appID + "&app_key=" + jobsAPIKey + "&results_per_page=25&what=" + userjobinput;
+  var jobsURL = "https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=" + appID + "&app_key=" + jobsAPIKey + "&results_per_page=25&what=" + userjobinput + "&location1=" + userJobCitySearch;
 
 fetch(jobsURL)
   .then(function(response) {
@@ -106,7 +109,7 @@ for (var i = 1; i <= 25; i++) {
 });
       
 };
-getJobsAPI();
+
 
 
  

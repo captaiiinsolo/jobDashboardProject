@@ -17,6 +17,9 @@
     <!-- intro.js CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intro.js@6.0.0/minified/introjs.min.css">
 
+
+     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+
 </head>
 
     <!-- Hero Section with Nav Items and NavBrand -->
@@ -193,11 +196,14 @@
                                         <div class="column">
                                             <p class="title">JOBS</p>
                                         </div>
+
+
                                         <form action="" id="jobsSearch">
                                             <input id= "userInput" type="text" class="input is-inline mt-4 mr-2" placeholder=" JOB TITLE " required="" data-parsley-length="[1, 30]">
                                             <input id= "userCitySearch" type="text" class="input is-inline mt-4 mr-2" placeholder=" LOCATION " data-parsley-length="[1, 30]">
                                             <input id="jobbtn" class="button auto is-rounded js-modal-trigger mt-4 mr-2" data-target="jobsModal" type="submit" >
                                         </form>
+
                                     </div>
                                 <div class="notification ">
                                     <div class="box ">

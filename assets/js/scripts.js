@@ -7,9 +7,6 @@ var requestURL = "http://dataservice.accuweather.com/locations/v1/cities/search?
 
 // Calls the AccuWeather API (Nested Promise - First call to Location API to get location Key. Second Call to daily forecast API for weather information)
 function getAccuWeatherAPI() {
-  // var searchCity = "san diego";
-  // var APIKey = "G7TFrvoMDfSH4fn8av5CZDJviR257GdG";
-  // var requestURL = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=" + APIKey + "&q=" + searchCity;
 
    fetch(requestURL)
    .then(function(response) {
@@ -54,23 +51,28 @@ function getAccuWeatherAPI() {
      if (i == data5day.DailyForecast[i].length){
       $("#day1").append(data5day.DailyForecasts[i].Date);
      };
+
     }
    });
   });
 
 }
+
 // getAccuWeatherAPI();
+
 
 
 function getJobsAPI() {
   var appID = "a1161bda";
+  var userjobinput = $("#userjobinput").val();
+  var userJobCitySearch =$("#userJobCitySearch").val()
   var jobsAPIKey = "3cbd548d24f2c7935ae4266b18c9a165";
-  var jobsURL = "https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=" + appID + "&app_key=" + jobsAPIKey + "&results_per_page=25&what=software%20engineer";
+  var jobsURL = "https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=" + appID + "&app_key=" + jobsAPIKey + "&results_per_page=25&what=" + userjobinput + "&location1=" + userJobCitySearch;
 
 fetch(jobsURL)
-.then(function(response) {
-if(!response.ok){
-throw response.json();
+  .then(function(response) {
+   if(!response.ok){
+   throw response.json();
 }
 return response.json();
  })
@@ -88,8 +90,6 @@ for (var i = 1; i <= 25; i++) {
       
 };
 
-// getJobsAPI();
-
 // Calls cola data USA API
 function colaAPI(){
  
@@ -104,22 +104,18 @@ function colaAPI(){
   return response.json();
   })
   .then(function(coladata){
-  });
+ for (var i = 1; i=1; i++){
+ $("#housingresults").append($(`<tr><td>${coladata.data[i].Place}</td><td>${coladata.data[i].Population}</td><td>\$${coladata.data[i].Year}</td></tr>`));
+}
+   
+ });
   
 }
-// colaAPI();
+//colaAPI();
 
-// Toggles Weather Container Visibility on nav link click
 function showWeather() {
   $("#navWeather").on("click", function() {
     $("#weatherContainer").toggleClass("is-hidden");
-  });
-}
-
-// Toggles Jobs Container Visibility on nav link click
-function showJobs() {
-  $("#navJobs").on("click", function(){
-    $("#jobsContainer").toggleClass("is-hidden");
   });
 }
 
@@ -130,21 +126,31 @@ function showHousing() {
   });
 }
 
-// Runs the following functions on document load
-$(document).ready(function() {
 
-  showWeather();
-  showJobs();
-  showHousing();
 
-  // Check for click events on the navbar burger icon
+
+// Toggles Jobs Container Visibility on nav link click
+function showJobs() {
+   $("#navJobs").on("click", function(){
+    $("#jobsContainer").toggleClass("is-hidden");
+   });
+ }
+
+
+
+
+
+
+
+ //Runs the following functions on document load
+ $(document).ready(function() {
+  showJobs();   showHousing();
+   // Check for click events on the navbar burger icon
   $(".navbar-burger").click(function() {
-
-      // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-      $(".navbar-burger").toggleClass("is-active");
-      $(".navbar-menu").toggleClass("is-active");
-
-  });
+       // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"       $(".navbar-burger").toggleClass("is-active");
+      $(".navbar-menu").toggleClass("is-active")
+ 
+});
 
 
 });

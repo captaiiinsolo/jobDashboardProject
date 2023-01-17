@@ -79,12 +79,13 @@ event.preventDefault();
 alert(event)
 });
 
-
+var userjobinput = $("#userjobinput").val();
 
 function getJobsAPI() {
   var appID = "a1161bda";
   var jobsAPIKey = "3cbd548d24f2c7935ae4266b18c9a165";
-  var jobsURL = "https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=" + appID + "&app_key=" + jobsAPIKey + "&results_per_page=25&what=software%20engineer";
+  var jobsURL = "https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=" + appID + "&app_key=" + jobsAPIKey + "&results_per_page=25&what=" + userjobinput;
+
 fetch(jobsURL)
   .then(function(response) {
    if(!response.ok){

@@ -29,28 +29,28 @@ function getAccuWeatherAPI() {
     // Appending the data to each daily card for the 5 day section
 
     // Day 1
-    $("#day0").append(data5day.DailyForecasts[0].Date);
+    $("#day0").append(dayjs(data5day.DailyForecasts[0].Date).format(" dddd MMMM DD, YYYY  h:mm a "));
     $("#current-temp0").append(data5day.DailyForecasts[0].Temperature.Maximum.Value);
     $("#temp-phrase0").append(data5day.DailyForecasts[0].Day.IconPhrase);
 
 
     // Day2
-    $("#day1").append(data5day.DailyForecasts[1].Date);
+    $("#day1").append(dayjs(data5day.DailyForecasts[1].Date).format(" dddd MMMM DD, YYYY  h:mm a "));
     $("#current-temp1").append(data5day.DailyForecasts[1].Temperature.Maximum.Value);
     $("#temp-phrase1").append(data5day.DailyForecasts[1].Day.IconPhrase);
 
     //Day3
-    $("#day2").append(data5day.DailyForecasts[2].Date);
+    $("#day2").append(dayjs(data5day.DailyForecasts[2].Date).format(" dddd MMMM DD, YYYY  h:mm a "));
     $("#current-temp2").append(data5day.DailyForecasts[2].Temperature.Maximum.Value);
     $("#temp-phrase2").append(data5day.DailyForecasts[2].Day.IconPhrase);
 
     //Day4
-    $("#day3").append(data5day.DailyForecasts[3].Date);
+    $("#day3").append(dayjs(data5day.DailyForecasts[3].Date).format(" dddd MMMM DD, YYYY  h:mm a "));
     $("#current-temp3").append(data5day.DailyForecasts[3].Temperature.Maximum.Value);
     $("#temp-phrase3").append(data5day.DailyForecasts[3].Day.IconPhrase);
 
     //Day5
-    $("#day4").append(data5day.DailyForecasts[4].Date);
+    $("#day4").append(dayjs(data5day.DailyForecasts[4].Date).format(" dddd MMMM DD, YYYY  h:mm a "));
     $("#current-temp4").append(data5day.DailyForecasts[4].Temperature.Maximum.Value);
     $("#temp-phrase4").append(data5day.DailyForecasts[4].Day.IconPhrase);
 

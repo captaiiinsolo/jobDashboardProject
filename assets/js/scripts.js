@@ -1,6 +1,6 @@
 // Calls the AccuWeather API (Nested Promise - First call to Location API to get location Key. Second Call to daily forecast API for weather information)
 function getAccuWeatherAPI() {
-  var searchCity = "san clemente";
+  var searchCity = $("#userWeatherInput").val();
   var APIKey = "G7TFrvoMDfSH4fn8av5CZDJviR257GdG";
   var requestURL = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=" + APIKey + "&q=" + searchCity;
 
@@ -26,8 +26,6 @@ function getAccuWeatherAPI() {
 
 
 
-
-    
     // Appending the data to each daily card for the 5 day section
 
     // Day 1
@@ -57,21 +55,16 @@ function getAccuWeatherAPI() {
     $("#temp-phrase4").append(data5day.DailyForecasts[4].Day.IconPhrase);
 
 
-// this function will be populating the job results query.
-
     });
   });
 }
 
 
 
-getAccuWeatherAPI();
 
-// Click search button functionality
-$(document).on("submit", function(clickCity){
-  clickCity.preventDefault();
-  console.log(clickCity)
-});
+
+
+
 
 
 
@@ -104,27 +97,6 @@ for (var i = 1; i <= 25; i++) {
 }
 //getJobsAPI();
 
-// Calls cola data USA API
-function colaAPI(){
-
-  var colaURL = "https://datausa.io/api/data?drilldowns=Place&measures=Population&year=latest";
-
-  fetch(colaURL)
-  .then(function(response){
-  if(!response.ok){
-  throw response.json();
- }
-
-  return response.json();
-  })
-  .then(function(coladata){
- for (var i = 1; i=1; i++){
- $("#housingresults").append($(`<tr><td>${coladata.data[i].Place}</td><td>${coladata.data[i].Population}</td><td>\$${coladata.data[i].Year}</td></tr>`));
-}
-
- });
-
-}
 
 //  Calls cola data USA API
  function colaAPI(){
@@ -237,7 +209,9 @@ $(function () {
     var ok = $('.parsley-error').length === 0;
     $("#weatherModal").toggleClass('is-active hidden', !ok);
   })
-  .on('form:submit', function() {
+  $(document).on("submit", function(clickCity){
+    clickCity.preventDefault();
+    console.log(clickCity)
     getAccuWeatherAPI();
   });
 });

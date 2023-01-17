@@ -35,10 +35,6 @@ function getAccuWeatherAPI() {
     console.log(data5day.Headline);
 
 
-   .then(function(weatherData) {
-    console.log(weatherData);
-   });
-
 
     $("#day1").append(data5day.DailyForecasts[0].Date);
     $("#day2").append(data5day.DailyForecasts[1].Date);
@@ -79,10 +75,9 @@ function getAccuWeatherAPI() {
 
     })
 
-    }
+    });
 
-   });
-  };
+   }
 
 getAccuWeatherAPI();
 
@@ -90,7 +85,7 @@ getAccuWeatherAPI();
 $(document).on("submit", function(clickCity){
   clickCity.preventDefault();
   console.log(clickCity)
-})
+});
 
 
 
@@ -164,10 +159,9 @@ for (var i = 1; i <= 25; i++) {
 });
 
 
-};
+});
+}
 //getJobsAPI();
-
-
 
 
 document.querySelector("#housingbtn").addEventListener("click",function(event){
@@ -175,7 +169,7 @@ document.querySelector("#housingbtn").addEventListener("click",function(event){
   alert(event)
 
       
-};
+});
 
 // Calls cola data USA API
 function colaAPI(){
@@ -198,54 +192,13 @@ function colaAPI(){
  });
   
 }
-//colaAPI();
-
-function showWeather() {
-  $("#navWeather").on("click", function() {
-    $("#weatherContainer").toggleClass("is-hidden");
-  });
-}
-
-// Toggles Housing Container Visibilty on nav link click
-function showHousing() {
-  $("#navHousing").on("click", function(){
-    $("#housingContainer").toggleClass("is-hidden");
-  });
-}
-
-
-
-
-
-// Toggles Jobs Container Visibility on nav link click
-function showJobs() {
-   $("#navJobs").on("click", function(){
-    $("#jobsContainer").toggleClass("is-hidden");
-   });
- }
-
-  fetch(jobsURL)
-      .then(function(response) {
-      return response.json();
-      })
-      .then(function(data) {
-      console.log(data);
-      });
-
-
-  })
-
-}
-
-
-getJobsAPI();
 
 
 document.querySelector("#housingbtn").addEventListener("click",function(event){
      event.preventDefault()
   alert(event)
 
- })
+ });
 
 //  Calls cola data USA API
  function colaAPI(){
@@ -273,7 +226,7 @@ document.querySelector("#housingbtn").addEventListener("click",function(event){
   });
 
  }
- colaAPI();
+//  colaAPI();
 
  //Runs the following functions on document load
  $(document).ready(function() {
@@ -284,7 +237,7 @@ document.querySelector("#housingbtn").addEventListener("click",function(event){
       $(".navbar-menu").toggleClass("is-active")
  
 });
-
+ });
 
 // // Toggles Weather Container Visibility on nav link click
  function showWeather() {
@@ -312,7 +265,7 @@ document.querySelector("#housingbtn").addEventListener("click",function(event){
 
   showWeather();
   showJobs();
-   showHousing();
+  showHousing();
 
   // Check for click events on the navbar burger icon
  $(".navbar-burger").click(function() {
@@ -326,11 +279,6 @@ document.querySelector("#housingbtn").addEventListener("click",function(event){
 
  });
 
- // Weather Modal Close on click
- $(".modal-close").on("click", function() {
-  $("#weatherModal").removeClass("is-active");
- });
-
 
 // // Weather Button Parsely.js validation function
  $(function () {
@@ -341,11 +289,6 @@ document.querySelector("#housingbtn").addEventListener("click",function(event){
    return; // Get AccuWeatherAPI function goes here. It will run on form submit.
   });
  });
-
-// Intro.Js tour start
-// introJs().start();
-
-});
 
  // Weather Modal Close on click
 $(".modal-close").on("click", function() {
@@ -398,4 +341,4 @@ $(function () {
 // Intro.Js tour start
 introJs().start();
 
-
+// Delete thsi comment

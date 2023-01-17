@@ -1,16 +1,8 @@
-// Variables
-
-var searchCity = "Honolulu";
-
-var searchCity = $("#userWeatherInput").val();
-
-var APIKey = "G7TFrvoMDfSH4fn8av5CZDJviR257GdG";
-var requestURL = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=" + APIKey + "&q=" + searchCity;
-
-
-
 // Calls the AccuWeather API (Nested Promise - First call to Location API to get location Key. Second Call to daily forecast API for weather information)
 function getAccuWeatherAPI() {
+  var searchCity = "san clemente";
+  var APIKey = "G7TFrvoMDfSH4fn8av5CZDJviR257GdG";
+  var requestURL = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=" + APIKey + "&q=" + searchCity;
 
    fetch(requestURL)
    .then(function(response) {
@@ -19,8 +11,6 @@ function getAccuWeatherAPI() {
    .then(function(dataRequest) {
     console.log(dataRequest);
     console.log(dataRequest[0].Key); //Logs the city key we need to make other requests using Accuweathers other APIs
-
-    var cityKey = dataRequest[0].Key;
 
     var cityKey = dataRequest[0].Key; // 347629 is the value of data[0].Key but console says its not defined.
 
@@ -32,22 +22,13 @@ function getAccuWeatherAPI() {
    .then(function(data5day) {
     console.log(data5day);
     console.log(data5day.DailyForecasts);
-    console.log(data5day.Headline);
-
-
-
-    $("#day1").append(data5day.DailyForecasts[0].Date);
-    $("#day2").append(data5day.DailyForecasts[1].Date);
-    $("#day3").append(data5day.DailyForecasts[2].Date);
-    $("#day4").append(data5day.DailyForecasts[3].Date);
-    $("#day5").append(data5day.DailyForecasts[4].Date);
 
     // Appending the data to each daily card for the 5 day section 
 
     // Day 1
     $("#day0").append(data5day.DailyForecasts[0].Date);
-    $("#current-temp").append(data5day.DailyForecasts[0].Temperature.Maximum.Value);
-    $("#temp-phrase").append(data5day.DailyForecasts[0].Day.IconPhrase);
+    $("#current-temp0").append(data5day.DailyForecasts[0].Temperature.Maximum.Value);
+    $("#temp-phrase0").append(data5day.DailyForecasts[0].Day.IconPhrase);
 
 
     // Day2
@@ -73,11 +54,9 @@ function getAccuWeatherAPI() {
 
 // this function will be populating the job results query.
 
-    })
-
     });
-
-   }
+  });
+}
 
 getAccuWeatherAPI();
 
@@ -108,11 +87,6 @@ console.log(document.getElementById('userCitySearch').value + document.getElemen
  });
 
 }
-
-// getAccuWeatherAPI();
-
-
-
 
 function getJobsAPI() {
   var appID = "a1161bda";
@@ -340,5 +314,3 @@ $(function () {
 
 // Intro.Js tour start
 introJs().start();
-
-// Delete thsi comment

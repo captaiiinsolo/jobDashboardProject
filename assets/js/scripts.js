@@ -1,5 +1,5 @@
 // Variables
-var searchCity = "San Francisco";
+var searchCity = $("#userWeatherInput").val();
 var APIKey = "G7TFrvoMDfSH4fn8av5CZDJviR257GdG";
 var requestURL = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=" + APIKey + "&q=" + searchCity;
 
@@ -57,22 +57,8 @@ function getAccuWeatherAPI() {
   });
 
 }
-//getAccuWeatherAPI();
 
-// Click search button functionality
-$(document).on("submit", function(clickCity){
-  clickCity.preventDefault();
-  console.log(clickCity)
-})
-
-// Calls the adzuna jobboard API
-//listens for jobs search click
-
-document.querySelector("#jobbtn").addEventListener("click",function(event){
-event.preventDefault();
-console.log(userjobinput)
-getJobsAPI();
-});
+// getAccuWeatherAPI();
 
 
 
@@ -104,15 +90,6 @@ for (var i = 1; i <= 25; i++) {
       
 };
 
-
-
- 
-
-document.querySelector("#housingbtn").addEventListener("click",function(event){
-  event.preventDefault()
-  alert(event)
-})
-
 // Calls cola data USA API
 function colaAPI(){
  
@@ -127,8 +104,6 @@ function colaAPI(){
   return response.json();
   })
   .then(function(coladata){
-
-
  for (var i = 1; i=1; i++){
  $("#housingresults").append($(`<tr><td>${coladata.data[i].Place}</td><td>${coladata.data[i].Population}</td><td>\$${coladata.data[i].Year}</td></tr>`));
 }
@@ -185,6 +160,15 @@ $(".modal-close").on("click", function() {
   $("#weatherModal").removeClass("is-active");
 });
 
+// Jobs Modal Close on click
+$(".modal-close").on("click", function() {
+ $("#jobsModal").removeClass("is-active");
+});
+
+// Housing Modal Close on click
+$(".modal-close").on("click", function() {
+ $("#housingModal").removeClass("is-active");
+});
 
 // Weather Button Parsely.js validation function
 $(function () {
@@ -193,7 +177,29 @@ $(function () {
     $("#weatherModal").toggleClass('is-active hidden', !ok); 
   })
   .on('form:submit', function() {
-    return; // Get AccuWeatherAPI function goes here. It will run on form submit.
+    getAccuWeatherAPI();
+  });
+});
+
+// Jobs Button Parsely.js validation function
+$(function () {
+  $('#jobsSearch').parsley().on('field:validated', function() {
+    var ok = $('.parsley-error').length === 0;
+    $("#jobsModal").toggleClass('is-active hidden', !ok); 
+  })
+  .on('form:submit', function() {
+     // Get JobsAPI function goes here.
+  });
+});
+
+// Housing Button Parsely.js validation function
+$(function () {
+  $('#housingSearch').parsley().on('field:validated', function() {
+    var ok = $('.parsley-error').length === 0;
+    $("#housingModal").toggleClass('is-active hidden', !ok); 
+  })
+  .on('form:submit', function() {
+     // Get colaData function goes here.
   });
 });
 

@@ -58,7 +58,7 @@ function getAccuWeatherAPI() {
   });
 }
 
-getAccuWeatherAPI();
+// getAccuWeatherAPI();
 
 // Click search button functionality
 $(document).on("submit", function(clickCity){
@@ -71,55 +71,16 @@ $(document).on("submit", function(clickCity){
 // Calls the adzuna job board API
 function getJobsAPI() {
   var appID = "a1161bda";
-  var jobsAPIKey = "3cbd548d24f2c7935ae4266b18c9a165";
-  var jobsURL = "https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=" + appID + "&app_key=" + jobsAPIKey + "&results_per_page=25&what=software%20engineer";
-
-// Calls the adzuna jobboard API
-// listens for jobs search click
-var userInput= document.getElementById('userInput');
-var userCitySearch = document.getElementById('userCitySearch');
-
-
-document.querySelector("#jobbtn").addEventListener("click",function(event){
-event.preventDefault();
-
-console.log(document.getElementById('userCitySearch').value + document.getElementById('userInput').value)
- });
-
-}
-
-function getJobsAPI() {
-  var appID = "a1161bda";
-
-  var jobsAPIKey = "3cbd548d24f2c7935ae4266b18c9a165";
-  var jobsURL = "https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=" + appID + "&app_key=" + jobsAPIKey + "&results_per_page=25&what=software%20engineer";
-
-fetch(jobsURL)
-.then(function(response) {
-if(!response.ok){
-throw response.json();
-}
-return response.json();
- })
- .then(function(jobsData){
-
- console.log(jobsData);
- console.log(jobsData.results[0]);
- console.log(jobsData.results[0].location.display_name);
-
-
   var userjobinput = $("#userjobinput").val();
   var userJobCitySearch =$("#userJobCitySearch").val()
   var jobsAPIKey = "3cbd548d24f2c7935ae4266b18c9a165";
   var jobsURL = "https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=" + appID + "&app_key=" + jobsAPIKey + "&results_per_page=25&what=" + userjobinput + "&location1=" + userJobCitySearch;
 
-fetch(jobsURL)
+  fetch(jobsURL)
   .then(function(response) {
-   if(!response.ok){
-   throw response.json();
-}
-return response.json();
- })
+    return response.json();
+   })
+
  .then(function(jobsData){
 
  console.log(jobsData);
@@ -133,17 +94,8 @@ for (var i = 1; i <= 25; i++) {
 });
 
 
-});
 }
 //getJobsAPI();
-
-
-document.querySelector("#housingbtn").addEventListener("click",function(event){
-  event.preventDefault()
-  alert(event)
-
-      
-});
 
 // Calls cola data USA API
 function colaAPI(){
@@ -166,13 +118,6 @@ function colaAPI(){
  });
   
 }
-
-
-document.querySelector("#housingbtn").addEventListener("click",function(event){
-     event.preventDefault()
-  alert(event)
-
- });
 
 //  Calls cola data USA API
  function colaAPI(){
@@ -297,7 +242,7 @@ $(function () {
     $("#jobsModal").toggleClass('is-active hidden', !ok); 
   })
   .on('form:submit', function() {
-     // Get JobsAPI function goes here.
+    getJobsAPI(); // Get JobsAPI function goes here.
   });
 });
 
@@ -314,3 +259,6 @@ $(function () {
 
 // Intro.Js tour start
 introJs().start();
+
+
+// figure out event listeners!

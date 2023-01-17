@@ -72,8 +72,8 @@ function getAccuWeatherAPI() {
 function getJobsAPI() {
   var appID = "a1161bda";
   var userjobinput = $("#userjobinput").val();
-  var userJobCitySearch =$("#userJobCitySearch").val()
-  var jobsAPIKey = "3cbd548d24f2c7935ae4266b18c9a165";
+  var userJobCitySearch =$("#userJobCitySearch").val();
+  var jobsAPIKey = "dbfe988566b5fafc5b98ec921f478c81";
   var jobsURL = "https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=" + appID + "&app_key=" + jobsAPIKey + "&results_per_page=25&what=" + userjobinput + "&location1=" + userJobCitySearch;
 
   fetch(jobsURL)

@@ -47,6 +47,7 @@ FullSpectrum is a website that was created to optimize your inquiries about your
 - Libraries
     - Intro.JS [https://introjs.com/]
     - Parsley.JS [https://parsleyjs.org/]
+    
 - Books:
     - Javascipt (6th Edition) by Mike McGrath
 

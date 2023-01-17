@@ -34,13 +34,13 @@ function getAccuWeatherAPI() {
     console.log(data5day.Headline);
 
 
-
+    // Appending the data to each daily card for the 5 day section 
 
     // Day 1
     $("#day0").append(data5day.DailyForecasts[0].Date);
     $("#current-temp").append(data5day.DailyForecasts[0].Temperature.Maximum.Value);
     $("#temp-phrase").append(data5day.DailyForecasts[0].Day.IconPhrase);
-    
+
 
     // Day2
     $("#day1").append(data5day.DailyForecasts[1].Date);

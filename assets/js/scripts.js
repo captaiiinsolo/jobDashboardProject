@@ -1,6 +1,6 @@
 // Calls the AccuWeather API (Nested Promise - First call to Location API to get location Key. Second Call to daily forecast API for weather information)
 function getAccuWeatherAPI() {
-  var searchCity = "san clemente";
+  var searchCity = $("#userWeatherInput").val();
   var APIKey = "G7TFrvoMDfSH4fn8av5CZDJviR257GdG";
   var requestURL = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=" + APIKey + "&q=" + searchCity;
 
@@ -22,8 +22,11 @@ function getAccuWeatherAPI() {
    .then(function(data5day) {
     console.log(data5day);
     console.log(data5day.DailyForecasts);
+    console.log(data5day.Headline);
 
-    // Appending the data to each daily card for the 5 day section 
+
+
+    // Appending the data to each daily card for the 5 day section
 
     // Day 1
     $("#day0").append(data5day.DailyForecasts[0].Date);
@@ -52,19 +55,16 @@ function getAccuWeatherAPI() {
     $("#temp-phrase4").append(data5day.DailyForecasts[4].Day.IconPhrase);
 
 
-// this function will be populating the job results query.
-
     });
   });
 }
 
-// getAccuWeatherAPI();
 
-// Click search button functionality
-$(document).on("submit", function(clickCity){
-  clickCity.preventDefault();
-  console.log(clickCity)
-});
+
+
+
+
+
 
 
 
@@ -86,7 +86,7 @@ function getJobsAPI() {
  console.log(jobsData);
  console.log(jobsData.results[0]);
  console.log(jobsData.results[0].location.display_name);
- 
+
 
 for (var i = 1; i <= 25; i++) {
   $("#results").append($("<tr><td>" + jobsData.results[i].title + "</td><td>" + jobsData.results[i].description + "</td><td>" + jobsData.results[i].location.display_name + "</td><td>$" + jobsData.results[i].salary_min + "-$" + jobsData.results[i].salary_max + "</td></tr>"));
@@ -97,27 +97,6 @@ for (var i = 1; i <= 25; i++) {
 }
 //getJobsAPI();
 
-// Calls cola data USA API
-function colaAPI(){
- 
-  var colaURL = "https://datausa.io/api/data?drilldowns=Place&measures=Population&year=latest";
-
-  fetch(colaURL)
-  .then(function(response){
-  if(!response.ok){
-  throw response.json();
- }
-
-  return response.json();
-  })
-  .then(function(coladata){
- for (var i = 1; i=1; i++){
- $("#housingresults").append($(`<tr><td>${coladata.data[i].Place}</td><td>${coladata.data[i].Population}</td><td>\$${coladata.data[i].Year}</td></tr>`));
-}
-   
- });
-  
-}
 
 //  Calls cola data USA API
  function colaAPI(){
@@ -154,7 +133,7 @@ function colaAPI(){
   $(".navbar-burger").click(function() {
        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"       $(".navbar-burger").toggleClass("is-active");
       $(".navbar-menu").toggleClass("is-active")
- 
+
 });
  });
 
@@ -228,9 +207,11 @@ $(".modal-close").on("click", function() {
 $(function () {
   $('#userCitySearch').parsley().on('field:validated', function() {
     var ok = $('.parsley-error').length === 0;
-    $("#weatherModal").toggleClass('is-active hidden', !ok); 
+    $("#weatherModal").toggleClass('is-active hidden', !ok);
   })
-  .on('form:submit', function() {
+  $(document).on("submit", function(clickCity){
+    clickCity.preventDefault();
+    console.log(clickCity)
     getAccuWeatherAPI();
   });
 });
@@ -239,7 +220,7 @@ $(function () {
 $(function () {
   $('#jobsSearch').parsley().on('field:validated', function() {
     var ok = $('.parsley-error').length === 0;
-    $("#jobsModal").toggleClass('is-active hidden', !ok); 
+    $("#jobsModal").toggleClass('is-active hidden', !ok);
   })
   .on('form:submit', function() {
     getJobsAPI(); // Get JobsAPI function goes here.
@@ -250,7 +231,7 @@ $(function () {
 $(function () {
   $('#housingSearch').parsley().on('field:validated', function() {
     var ok = $('.parsley-error').length === 0;
-    $("#housingModal").toggleClass('is-active hidden', !ok); 
+    $("#housingModal").toggleClass('is-active hidden', !ok);
   })
   .on('form:submit', function() {
      // Get colaData function goes here.
@@ -259,6 +240,3 @@ $(function () {
 
 // Intro.Js tour start
 introJs().start();
-
-
-// figure out event listeners!

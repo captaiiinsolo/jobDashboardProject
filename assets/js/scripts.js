@@ -98,8 +98,8 @@ for (var i = 1; i <= 25; i++) {
 
 //  Calls cola data USA API
  function colaAPI(){
-
- var colaURL = "https://datausa.io/api/data?drilldowns=Place&measures=Population&year=latest";
+ var housingbtn =$("#housingbtn").val()
+ var colaURL = "https://datausa.io/api/data?drilldowns=Place&measures=Population&year=latest" + housingbtn;
 
   fetch(colaURL)
    .then(function(response){
@@ -230,7 +230,7 @@ $(function () {
     $("#housingModal").toggleClass('is-active hidden', !ok);
   })
   .on('form:submit', function() {
-     // Get colaData function goes here.
+    getcolaAPI();
   });
 });
 

@@ -92,10 +92,8 @@ for (var i = 1; i <= 25; i++) {
   $("#results").append($("<tr><td>" + jobsData.results[i].title + "</td><td>" + jobsData.results[i].description + "</td><td>" + jobsData.results[i].location.display_name + "</td><td>$" + jobsData.results[i].salary_min + "-$" + jobsData.results[i].salary_max + "</td></tr>"));
 }
 });
-
-
 }
-//getJobsAPI();
+
 
 
 //  Calls cola data USA API
@@ -137,28 +135,28 @@ for (var i = 1; i <= 25; i++) {
 });
  });
 
-// // Toggles Weather Container Visibility on nav link click
+// Toggles Weather Container Visibility on nav link click
  function showWeather() {
   $("#navWeather").on("click", function() {
     $("#weatherContainer").toggleClass("is-hidden");
   });
  }
 
-// // Toggles Jobs Container Visibility on nav link click
+// Toggles Jobs Container Visibility on nav link click
  function showJobs() {
   $("#navJobs").on("click", function(){
     $("#jobsContainer").toggleClass("is-hidden");
    });
  }
 
-// // Toggles Housing Container Visibilty on nav link click
+// Toggles Housing Container Visibilty on nav link click
  function showHousing() {
   $("#navHousing").on("click", function(){
      $("#housingContainer").toggleClass("is-hidden");
    });
  }
 
-// // Runs the following functions on document load
+// Runs the following functions on document load
  $(document).ready(function() {
 
   showWeather();
@@ -178,7 +176,7 @@ for (var i = 1; i <= 25; i++) {
  });
 
 
-// // Weather Button Parsely.js validation function
+// Weather Button Parsely.js validation function
  $(function () {
   $('#userCitySearch').parsley().on('field:validated', function() {
     var ok = $('.parsley-error').length === 0;

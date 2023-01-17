@@ -206,7 +206,11 @@ $(function () {
   })
   $(document).on("submit", function(clickCity){
     clickCity.preventDefault();
-    console.log(clickCity);
+    $("#day0").empty();
+    $("#day1").empty();
+    $("#day2").empty();
+    $("#day3").empty();
+    $("#day4").empty();
     getAccuWeatherAPI();
   });
 });

@@ -27,12 +27,7 @@ function getAccuWeatherAPI() {
 
 
 
-    $("#day1").append(data5day.DailyForecasts[0].Date);
-    $("#day2").append(data5day.DailyForecasts[1].Date);
-    $("#day3").append(data5day.DailyForecasts[2].Date);
-    $("#day4").append(data5day.DailyForecasts[3].Date);
-    $("#day5").append(data5day.DailyForecasts[4].Date);
-
+    
     // Appending the data to each daily card for the 5 day section
 
     // Day 1
@@ -271,6 +266,3 @@ $(function () {
 
 // Intro.Js tour start
 introJs().start();
-
-
-

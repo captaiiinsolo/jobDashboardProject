@@ -55,16 +55,12 @@ function getAccuWeatherAPI() {
       $("#day1").append(data5day.DailyForecasts[i].Date);
      };
 
-// this function will be populating the job results query.
-
-
-
     }
    });
   });
 
 }
-getAccuWeatherAPI();
+//getAccuWeatherAPI();
 
 // Click search button functionality
 $(document).on("submit", function(clickCity){
@@ -72,25 +68,16 @@ $(document).on("submit", function(clickCity){
   console.log(clickCity)
 })
 
-
-
-// Calls the adzuna job board API
-function getJobsAPI() {
-  var appID = "a1161bda";
-  var jobsAPIKey = "3cbd548d24f2c7935ae4266b18c9a165";
-  var jobsURL = "https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=" + appID + "&app_key=" + jobsAPIKey + "&results_per_page=25&what=software%20engineer";
-
 // Calls the adzuna jobboard API
-// listens for jobs search click
-var userInput= document.getElementById('userInput');
-var userCitySearch = document.getElementById('userCitySearch');
+//listens for jobs search click
+//var userInput= document.getElementById('userInput');
+//var userCitySearch = document.getElementById('userCitySearch');
 
 
 document.querySelector("#jobbtn").addEventListener("click",function(event){
 event.preventDefault();
-
-console.log(document.getElementById('userCitySearch').value + document.getElementById('userInput').value)
- });
+alert(event)
+});
 
 
 
@@ -98,11 +85,10 @@ function getJobsAPI() {
   var appID = "a1161bda";
   var jobsAPIKey = "3cbd548d24f2c7935ae4266b18c9a165";
   var jobsURL = "https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=" + appID + "&app_key=" + jobsAPIKey + "&results_per_page=25&what=software%20engineer";
-
 fetch(jobsURL)
-.then(function(response) {
-if(!response.ok){
-throw response.json();
+  .then(function(response) {
+   if(!response.ok){
+   throw response.json();
 }
 return response.json();
  })
@@ -119,7 +105,7 @@ for (var i = 1; i <= 25; i++) {
 });
       
 };
-//getJobsAPI();
+getJobsAPI();
 
 
  
@@ -127,31 +113,7 @@ for (var i = 1; i <= 25; i++) {
 document.querySelector("#housingbtn").addEventListener("click",function(event){
   event.preventDefault()
   alert(event)
-
-
-  fetch(jobsURL)
-      .then(function(response) {
-      return response.json();
-      })
-      .then(function(data) {
-      console.log(data);
-      });
-
-
-  })
-
-}
-
-
-getJobsAPI();
-
-
-document.querySelector("#housingbtn").addEventListener("click",function(event){
-  event.preventDefault()
-alert(event)
-
 })
-
 
 // Calls cola data USA API
 function colaAPI(){
@@ -167,10 +129,10 @@ function colaAPI(){
   return response.json();
   })
   .then(function(coladata){
-    console.log(coladata);
+    //console.log(coladata);
     console.log(coladata.data[0]);
-   console.log(coladata.results[0].Population);
-   console.log(coladata.results[0].Year);
+   // console.log(coladata.results[0].Population);
+   // console.log(coladata.results[0].Year);
 
  for (var i = 1; i=1; i++){
  $("#housingresults").append($(`<tr><td>${coladata.data[i].Place}</td><td>${coladata.data[i].Population}</td><td>\$${coladata.data[i].Year}</td></tr>`));
@@ -179,19 +141,11 @@ function colaAPI(){
  });
   
 }
-colaAPI();
+//colaAPI();
 
-// Toggles Weather Container Visibility on nav link click
 function showWeather() {
   $("#navWeather").on("click", function() {
     $("#weatherContainer").toggleClass("is-hidden");
-  });
-}
-
-// Toggles Jobs Container Visibility on nav link click
-function showJobs() {
-  $("#navJobs").on("click", function(){
-    $("#jobsContainer").toggleClass("is-hidden");
   });
 }
 
@@ -202,24 +156,48 @@ function showHousing() {
   });
 }
 
-// Runs the following functions on document load
-$(document).ready(function() {
-
-  showWeather();
-  showJobs();
-  showHousing();
-
-  // Check for click events on the navbar burger icon
-  $(".navbar-burger").click(function() {
-
-      // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-      $(".navbar-burger").toggleClass("is-active");
-      $(".navbar-menu").toggleClass("is-active");
-
-  });
 
 
-});
+
+// // Toggles Jobs Container Visibility on nav link click
+// function showJobs() {
+//   $("#navJobs").on("click", function(){
+//     $("#jobsContainer").toggleClass("is-hidden");
+//   });
+// }
+
+ //showWeather();
+  //showJobs();
+  //showHousing();
+
+
+
+
+
+// // Toggles Housing Container Visibilty on nav link click
+// function showHousing() {
+//   $("#navHousing").on("click", function(){
+//     $("#housingContainer").toggleClass("is-hidden");
+//   });
+// }
+
+// // Runs the following functions on document load
+// $(document).ready(function() {
+
+//   showJobs();
+//   showHousing();
+
+//   // Check for click events on the navbar burger icon
+//   $(".navbar-burger").click(function() {
+
+//       // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+//       $(".navbar-burger").toggleClass("is-active");
+//       $(".navbar-menu").toggleClass("is-active");
+
+//   });
+
+
+// });
 
  // Weather Modal Close on click
 $(".modal-close").on("click", function() {

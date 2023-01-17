@@ -2,7 +2,7 @@
 var searchCity = "San Francisco";
 var APIKey = "G7TFrvoMDfSH4fn8av5CZDJviR257GdG";
 var requestURL = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=" + APIKey + "&q=" + searchCity;
-var iconHolder = document.querySelector("#day1-icon")
+
 
 
 // Calls the AccuWeather API (Nested Promise - First call to Location API to get location Key. Second Call to daily forecast API for weather information)
@@ -35,24 +35,30 @@ function getAccuWeatherAPI() {
     console.log(data5day.DailyForecasts.length)
 
 
-  var icons = document.createElement("img")
-  icons.src = "https://developer.accuweather.com/sites/default/files/01-s.png"
-  console.log("Check out", icons)
-    $("#day1-icon").attr( "src", "https://developer.accuweather.com/sites/default/files/01-s.png");
 
+    // Day 1
     $("#day1").append(data5day.DailyForecasts[0].Date);
+    $("#current-temp").append(data5day.DailyForecasts[0].Temperature.Maximum.Value);
+    $("#temp-phrase").append(data5day.DailyForecasts[0].Day.IconPhrase)
+    // Day2
     $("#day2").append(data5day.DailyForecasts[1].Date);
+
+    //Day3
     $("#day3").append(data5day.DailyForecasts[2].Date);
+
+    //Day4
     $("#day4").append(data5day.DailyForecasts[3].Date);
+
+    //Day
     $("#day5").append(data5day.DailyForecasts[4].Date);
 
-
+    // For loop to iterate the days to each individual cards
     for (i = 0; i < data5day.DailyForecast[i].length; i++) {
     console.log(data5day.DailyForecast[i].Date)
      if (i == data5day.DailyForecast[i].length){
       $("#day1").append(data5day.DailyForecasts[i].Date);
      };
-  }
+   }
 
 // this function will be populating the job results query.
 

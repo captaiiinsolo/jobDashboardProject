@@ -1,5 +1,5 @@
 // Variables
-var searchCity = "San Francisco";
+var searchCity = "Honolulu";
 var APIKey = "G7TFrvoMDfSH4fn8av5CZDJviR257GdG";
 var requestURL = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=" + APIKey + "&q=" + searchCity;
 
@@ -37,28 +37,45 @@ function getAccuWeatherAPI() {
 
 
     // Day 1
-    $("#day1").append(data5day.DailyForecasts[0].Date);
+    $("#day0").append(data5day.DailyForecasts[0].Date);
     $("#current-temp").append(data5day.DailyForecasts[0].Temperature.Maximum.Value);
-    $("#temp-phrase").append(data5day.DailyForecasts[0].Day.IconPhrase)
+    $("#temp-phrase").append(data5day.DailyForecasts[0].Day.IconPhrase);
+    // $("#temp-phrase").append(data5day.DailyForecasts[0].LocalSource.WeatherCode);
+
     // Day2
-    $("#day2").append(data5day.DailyForecasts[1].Date);
+    $("#day1").append(data5day.DailyForecasts[1].Date);
+    $("#current-temp1").append(data5day.DailyForecasts[1].Temperature.Maximum.Value);
+    $("#temp-phrase1").append(data5day.DailyForecasts[1].Day.IconPhrase);
 
     //Day3
-    $("#day3").append(data5day.DailyForecasts[2].Date);
+    $("#day2").append(data5day.DailyForecasts[2].Date);
+    $("#current-temp2").append(data5day.DailyForecasts[2].Temperature.Maximum.Value);
+    $("#temp-phrase2").append(data5day.DailyForecasts[2].Day.IconPhrase);
 
     //Day4
-    $("#day4").append(data5day.DailyForecasts[3].Date);
+    $("#day3").append(data5day.DailyForecasts[3].Date);
+    $("#current-temp3").append(data5day.DailyForecasts[3].Temperature.Maximum.Value);
+    $("#temp-phrase3").append(data5day.DailyForecasts[3].Day.IconPhrase);
 
-    //Day
-    $("#day5").append(data5day.DailyForecasts[4].Date);
+    //Day5
+    $("#day4").append(data5day.DailyForecasts[4].Date);
+    $("#current-temp4").append(data5day.DailyForecasts[4].Temperature.Maximum.Value);
+    $("#temp-phrase4").append(data5day.DailyForecasts[4].Day.IconPhrase);
 
     // For loop to iterate the days to each individual cards
-    for (i = 0; i < data5day.DailyForecast[i].length; i++) {
-    console.log(data5day.DailyForecast[i].Date)
-     if (i == data5day.DailyForecast[i].length){
-      $("#day1").append(data5day.DailyForecasts[i].Date);
-     };
-   }
+  //   for (i = 1; i < data5day.DailyForecast[i].length; i++) {
+  //   console.log(data5day.DailyForecast[i].Date)
+  //    if (i == data5day.DailyForecast[i].length){
+  //     $("#day1").append(data5day.DailyForecasts[i].Date);
+  //    };
+  //  }
+
+   // For loop to iterate the temo to individual cards
+  //  for (i=0; i<data5day.DailyForecast[i].length; i++){
+  //   console.log(data5day.DailyForecast[i].Temperature.Maximum.Value)
+  // }
+
+
 
 // this function will be populating the job results query.
 

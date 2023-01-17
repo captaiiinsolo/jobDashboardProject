@@ -1,5 +1,9 @@
 // Variables
+
 var searchCity = "Honolulu";
+
+var searchCity = $("#userWeatherInput").val();
+
 var APIKey = "G7TFrvoMDfSH4fn8av5CZDJviR257GdG";
 var requestURL = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=" + APIKey + "&q=" + searchCity;
 
@@ -7,9 +11,6 @@ var requestURL = "http://dataservice.accuweather.com/locations/v1/cities/search?
 
 // Calls the AccuWeather API (Nested Promise - First call to Location API to get location Key. Second Call to daily forecast API for weather information)
 function getAccuWeatherAPI() {
-  // var searchCity = "san diego";
-  // var APIKey = "G7TFrvoMDfSH4fn8av5CZDJviR257GdG";
-  // var requestURL = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=" + APIKey + "&q=" + searchCity;
 
    fetch(requestURL)
    .then(function(response) {
@@ -33,6 +34,17 @@ function getAccuWeatherAPI() {
     console.log(data5day.DailyForecasts);
     console.log(data5day.Headline);
 
+
+   .then(function(weatherData) {
+    console.log(weatherData);
+   });
+
+
+    $("#day1").append(data5day.DailyForecasts[0].Date);
+    $("#day2").append(data5day.DailyForecasts[1].Date);
+    $("#day3").append(data5day.DailyForecasts[2].Date);
+    $("#day4").append(data5day.DailyForecasts[3].Date);
+    $("#day5").append(data5day.DailyForecasts[4].Date);
 
     // Appending the data to each daily card for the 5 day section 
 
@@ -63,10 +75,12 @@ function getAccuWeatherAPI() {
     $("#temp-phrase4").append(data5day.DailyForecasts[4].Day.IconPhrase);
 
 
-
 // this function will be populating the job results query.
 
     })
+
+    }
+
    });
   };
 
@@ -98,10 +112,16 @@ event.preventDefault();
 console.log(document.getElementById('userCitySearch').value + document.getElementById('userInput').value)
  });
 
+}
+
+// getAccuWeatherAPI();
+
+
 
 
 function getJobsAPI() {
   var appID = "a1161bda";
+
   var jobsAPIKey = "3cbd548d24f2c7935ae4266b18c9a165";
   var jobsURL = "https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=" + appID + "&app_key=" + jobsAPIKey + "&results_per_page=25&what=software%20engineer";
 
@@ -119,10 +139,30 @@ return response.json();
  console.log(jobsData.results[0].location.display_name);
 
 
+  var userjobinput = $("#userjobinput").val();
+  var userJobCitySearch =$("#userJobCitySearch").val()
+  var jobsAPIKey = "3cbd548d24f2c7935ae4266b18c9a165";
+  var jobsURL = "https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=" + appID + "&app_key=" + jobsAPIKey + "&results_per_page=25&what=" + userjobinput + "&location1=" + userJobCitySearch;
+
+fetch(jobsURL)
+  .then(function(response) {
+   if(!response.ok){
+   throw response.json();
+}
+return response.json();
+ })
+ .then(function(jobsData){
+
+ console.log(jobsData);
+ console.log(jobsData.results[0]);
+ console.log(jobsData.results[0].location.display_name);
+ 
+
 for (var i = 1; i <= 25; i++) {
   $("#results").append($("<tr><td>" + jobsData.results[i].title + "</td><td>" + jobsData.results[i].description + "</td><td>" + jobsData.results[i].location.display_name + "</td><td>$" + jobsData.results[i].salary_min + "-$" + jobsData.results[i].salary_max + "</td></tr>"));
 }
 });
+
 
 };
 //getJobsAPI();
@@ -134,6 +174,55 @@ document.querySelector("#housingbtn").addEventListener("click",function(event){
   event.preventDefault()
   alert(event)
 
+      
+};
+
+// Calls cola data USA API
+function colaAPI(){
+ 
+  var colaURL = "https://datausa.io/api/data?drilldowns=Place&measures=Population&year=latest";
+
+  fetch(colaURL)
+  .then(function(response){
+  if(!response.ok){
+  throw response.json();
+ }
+
+  return response.json();
+  })
+  .then(function(coladata){
+ for (var i = 1; i=1; i++){
+ $("#housingresults").append($(`<tr><td>${coladata.data[i].Place}</td><td>${coladata.data[i].Population}</td><td>\$${coladata.data[i].Year}</td></tr>`));
+}
+   
+ });
+  
+}
+//colaAPI();
+
+function showWeather() {
+  $("#navWeather").on("click", function() {
+    $("#weatherContainer").toggleClass("is-hidden");
+  });
+}
+
+// Toggles Housing Container Visibilty on nav link click
+function showHousing() {
+  $("#navHousing").on("click", function(){
+    $("#housingContainer").toggleClass("is-hidden");
+  });
+}
+
+
+
+
+
+// Toggles Jobs Container Visibility on nav link click
+function showJobs() {
+   $("#navJobs").on("click", function(){
+    $("#jobsContainer").toggleClass("is-hidden");
+   });
+ }
 
   fetch(jobsURL)
       .then(function(response) {
@@ -168,6 +257,7 @@ document.querySelector("#housingbtn").addEventListener("click",function(event){
    if(!response.ok){
   }
 
+
    return response.json();
    })
    .then(function(coladata){
@@ -184,6 +274,17 @@ document.querySelector("#housingbtn").addEventListener("click",function(event){
 
  }
  colaAPI();
+
+ //Runs the following functions on document load
+ $(document).ready(function() {
+  showJobs();   showHousing();
+   // Check for click events on the navbar burger icon
+  $(".navbar-burger").click(function() {
+       // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"       $(".navbar-burger").toggleClass("is-active");
+      $(".navbar-menu").toggleClass("is-active")
+ 
+});
+
 
 // // Toggles Weather Container Visibility on nav link click
  function showWeather() {
@@ -243,3 +344,58 @@ document.querySelector("#housingbtn").addEventListener("click",function(event){
 
 // Intro.Js tour start
 // introJs().start();
+
+});
+
+ // Weather Modal Close on click
+$(".modal-close").on("click", function() {
+  $("#weatherModal").removeClass("is-active");
+});
+
+// Jobs Modal Close on click
+$(".modal-close").on("click", function() {
+ $("#jobsModal").removeClass("is-active");
+});
+
+// Housing Modal Close on click
+$(".modal-close").on("click", function() {
+ $("#housingModal").removeClass("is-active");
+});
+
+// Weather Button Parsely.js validation function
+$(function () {
+  $('#userCitySearch').parsley().on('field:validated', function() {
+    var ok = $('.parsley-error').length === 0;
+    $("#weatherModal").toggleClass('is-active hidden', !ok); 
+  })
+  .on('form:submit', function() {
+    getAccuWeatherAPI();
+  });
+});
+
+// Jobs Button Parsely.js validation function
+$(function () {
+  $('#jobsSearch').parsley().on('field:validated', function() {
+    var ok = $('.parsley-error').length === 0;
+    $("#jobsModal").toggleClass('is-active hidden', !ok); 
+  })
+  .on('form:submit', function() {
+     // Get JobsAPI function goes here.
+  });
+});
+
+// Housing Button Parsely.js validation function
+$(function () {
+  $('#housingSearch').parsley().on('field:validated', function() {
+    var ok = $('.parsley-error').length === 0;
+    $("#housingModal").toggleClass('is-active hidden', !ok); 
+  })
+  .on('form:submit', function() {
+     // Get colaData function goes here.
+  });
+});
+
+// Intro.Js tour start
+introJs().start();
+
+

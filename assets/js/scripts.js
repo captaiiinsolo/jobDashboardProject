@@ -22,8 +22,18 @@ function getAccuWeatherAPI() {
    .then(function(data5day) {
     console.log(data5day);
     console.log(data5day.DailyForecasts);
+    console.log(data5day.Headline);
 
-    // Appending the data to each daily card for the 5 day section 
+
+
+
+    $("#day1").append(data5day.DailyForecasts[0].Date);
+    $("#day2").append(data5day.DailyForecasts[1].Date);
+    $("#day3").append(data5day.DailyForecasts[2].Date);
+    $("#day4").append(data5day.DailyForecasts[3].Date);
+    $("#day5").append(data5day.DailyForecasts[4].Date);
+
+    // Appending the data to each daily card for the 5 day section
 
     // Day 1
     $("#day0").append(data5day.DailyForecasts[0].Date);
@@ -58,7 +68,9 @@ function getAccuWeatherAPI() {
   });
 }
 
-// getAccuWeatherAPI();
+
+
+getAccuWeatherAPI();
 
 // Click search button functionality
 $(document).on("submit", function(clickCity){
@@ -86,7 +98,7 @@ function getJobsAPI() {
  console.log(jobsData);
  console.log(jobsData.results[0]);
  console.log(jobsData.results[0].location.display_name);
- 
+
 
 for (var i = 1; i <= 25; i++) {
   $("#results").append($("<tr><td>" + jobsData.results[i].title + "</td><td>" + jobsData.results[i].description + "</td><td>" + jobsData.results[i].location.display_name + "</td><td>$" + jobsData.results[i].salary_min + "-$" + jobsData.results[i].salary_max + "</td></tr>"));
@@ -99,7 +111,7 @@ for (var i = 1; i <= 25; i++) {
 
 // Calls cola data USA API
 function colaAPI(){
- 
+
   var colaURL = "https://datausa.io/api/data?drilldowns=Place&measures=Population&year=latest";
 
   fetch(colaURL)
@@ -114,9 +126,9 @@ function colaAPI(){
  for (var i = 1; i=1; i++){
  $("#housingresults").append($(`<tr><td>${coladata.data[i].Place}</td><td>${coladata.data[i].Population}</td><td>\$${coladata.data[i].Year}</td></tr>`));
 }
-   
+
  });
-  
+
 }
 
 //  Calls cola data USA API
@@ -154,7 +166,7 @@ function colaAPI(){
   $(".navbar-burger").click(function() {
        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"       $(".navbar-burger").toggleClass("is-active");
       $(".navbar-menu").toggleClass("is-active")
- 
+
 });
  });
 
@@ -228,7 +240,7 @@ $(".modal-close").on("click", function() {
 $(function () {
   $('#userCitySearch').parsley().on('field:validated', function() {
     var ok = $('.parsley-error').length === 0;
-    $("#weatherModal").toggleClass('is-active hidden', !ok); 
+    $("#weatherModal").toggleClass('is-active hidden', !ok);
   })
   .on('form:submit', function() {
     getAccuWeatherAPI();
@@ -239,7 +251,7 @@ $(function () {
 $(function () {
   $('#jobsSearch').parsley().on('field:validated', function() {
     var ok = $('.parsley-error').length === 0;
-    $("#jobsModal").toggleClass('is-active hidden', !ok); 
+    $("#jobsModal").toggleClass('is-active hidden', !ok);
   })
   .on('form:submit', function() {
     getJobsAPI(); // Get JobsAPI function goes here.
@@ -250,7 +262,7 @@ $(function () {
 $(function () {
   $('#housingSearch').parsley().on('field:validated', function() {
     var ok = $('.parsley-error').length === 0;
-    $("#housingModal").toggleClass('is-active hidden', !ok); 
+    $("#housingModal").toggleClass('is-active hidden', !ok);
   })
   .on('form:submit', function() {
      // Get colaData function goes here.
@@ -261,4 +273,4 @@ $(function () {
 introJs().start();
 
 
-// figure out event listeners!
+

@@ -70,10 +70,10 @@ function getAccuWeatherAPI() {
 
 // Calls the adzuna job board API
 function getJobsAPI() {
-  var appID = "a1161bda";
+  var appID = "59959f13";
   var userjobinput = $("#userjobinput").val();
   var userJobCitySearch =$("#userJobCitySearch").val();
-  var jobsAPIKey = "dbfe988566b5fafc5b98ec921f478c81";
+  var jobsAPIKey = "009140e57af618149df1a7e6ca66d05b";
   var jobsURL = "https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=" + appID + "&app_key=" + jobsAPIKey + "&results_per_page=25&what=" + userjobinput + "&location1=" + userJobCitySearch;
 
   fetch(jobsURL)

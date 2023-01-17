@@ -98,7 +98,7 @@ for (var i = 1; i <= 25; i++) {
 
 //  Calls cola data USA API
  function colaAPI(){
- var housingbtn =$("#housingbtn").val()
+ var housingbtn =$("#housingbtn").val();
  var colaURL = "https://datausa.io/api/data?drilldowns=Place&measures=Population&year=latest" + housingbtn;
 
   fetch(colaURL)

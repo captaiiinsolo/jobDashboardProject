@@ -40,7 +40,7 @@ function getAccuWeatherAPI() {
     $("#day0").append(data5day.DailyForecasts[0].Date);
     $("#current-temp").append(data5day.DailyForecasts[0].Temperature.Maximum.Value);
     $("#temp-phrase").append(data5day.DailyForecasts[0].Day.IconPhrase);
-    // $("#temp-phrase").append(data5day.DailyForecasts[0].LocalSource.WeatherCode);
+    
 
     // Day2
     $("#day1").append(data5day.DailyForecasts[1].Date);

@@ -42,6 +42,11 @@ FullSpectrum is a website that was created to optimize your inquiries about your
 - API Documents
     - Accu Weather [https://developer.accuweather.com/accuweather-forecast-api/apis]
     - Adzuna [https://developer.adzuna.com/]
+    - DataUSA [https://datausa.io/about/api/]
+
+- Libraries
+    - Intro.JS [https://introjs.com/]
+    - Parsley.JS [https://parsleyjs.org/]
 - Books:
     - Javascipt (6th Edition) by Mike McGrath
 

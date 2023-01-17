@@ -67,10 +67,10 @@ function getAccuWeatherAPI() {
 getAccuWeatherAPI();
 
 // Click search button functionality
-$(document).on("submit", function(clickCity){
-  clickCity.preventDefault();
-  console.log(clickCity)
-})
+// $(document).on("submit", function(clickCity){
+//   clickCity.preventDefault();
+//   console.log(clickCity)
+// })
 
 
 
@@ -86,11 +86,11 @@ var userInput= document.getElementById('userInput');
 var userCitySearch = document.getElementById('userCitySearch');
 
 
-document.querySelector("#jobbtn").addEventListener("click",function(event){
-event.preventDefault();
+// document.querySelector("#jobbtn").addEventListener("click",function(event){
+// event.preventDefault();
 
-console.log(document.getElementById('userCitySearch').value + document.getElementById('userInput').value)
- });
+// console.log(document.getElementById('userCitySearch').value + document.getElementById('userInput').value)
+//  });
 
 
 
@@ -167,14 +167,14 @@ function colaAPI(){
   return response.json();
   })
   .then(function(coladata){
-    console.log(coladata);
-    console.log(coladata.data[0]);
-   console.log(coladata.results[0].Population);
-   console.log(coladata.results[0].Year);
+  //   console.log(coladata);
+  //   console.log(coladata.data[0]);
+  //  console.log(coladata.results[0].Population);
+  //  console.log(coladata.results[0].Year);
 
- for (var i = 1; i=1; i++){
- $("#housingresults").append($(`<tr><td>${coladata.data[i].Place}</td><td>${coladata.data[i].Population}</td><td>\$${coladata.data[i].Year}</td></tr>`));
-}
+//  for (var i = 1; i=1; i++){
+//  $("#housingresults").append($(`<tr><td>${coladata.data[i].Place}</td><td>${coladata.data[i].Population}</td><td>\$${coladata.data[i].Year}</td></tr>`));
+// }
    
  });
   
@@ -226,6 +226,10 @@ $(".modal-close").on("click", function() {
   $("#weatherModal").removeClass("is-active");
 });
 
+// Weather Modal Close on click
+$(".modal-close").on("click", function() {
+ $("#jobsModal").removeClass("is-active");
+});
 
 // Weather Button Parsely.js validation function
 $(function () {
@@ -237,6 +241,18 @@ $(function () {
     return; // Get AccuWeatherAPI function goes here. It will run on form submit.
   });
 });
+
+// Jobs Button Parsely.js validation function
+$(function () {
+  $('#jobsSearch').parsley().on('field:validated', function() {
+    var ok = $('.parsley-error').length === 0;
+    $("#jobsModal").toggleClass('is-active hidden', !ok); 
+  })
+  .on('form:submit', function() {
+    return; // Get JobsAPI function goes here.
+  });
+});
+
 
 // Intro.Js tour start
 introJs().start();

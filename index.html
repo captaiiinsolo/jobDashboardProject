@@ -172,21 +172,32 @@
                 <div class="container has-text-left">
                         <div class="columns">
                             <div class="column">
+
+                                       <!-- Parsely Callout for form validation -->
+                                <div id="jobsModal" class="modal bs-callout bs-callout-warning hidden">
+                                    <div class="modal-background"></div>
+                                    <div class="modal-content">
+                                        <div class="box">
+                                            <div>
+                                                <p class="title">Oh snap!</p>
+                                                <p class="sub-title">Please enter a US City</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="modal-close is-large" aria-label="close"></button>
+                                </div>
+
                                 <div id="jobsContainer" class="box" data-intro="This is the is the jobs section. Here you can search for jobs by their title, location, or both. Job listings will populate below." data-step="6 of 8">
                                     <div class="container mb-6">
                                        <div class="columns">
                                         <div class="column">
                                             <p class="title">JOBS</p>
                                         </div>
-                                        <div class="column">
-                                            <input id= "userInput" type="text" class="input" placeholder=" JOB TITLE ">
-                                        </div>
-                                        <div class="column">
-                                            <input id= "userCitySearch" type="text" class="input" placeholder=" LOCATION ">
-                                       </div>
-                                       <div class="colummn">
-                                        <input id="jobbtn" class="button auto is-rounded mt-3" type="submit" >
-                                       </div>
+                                        <form action="" id="jobsSearch">
+                                            <input id= "userInput" type="text" class="input" placeholder=" JOB TITLE " required="" data-parsley-length="[1, 30]">
+                                            <input id= "userCitySearch" type="text" class="input" placeholder=" LOCATION " data-parsley-length="[1, 30]">
+                                            <input id="jobbtn" class="button auto is-rounded mt-3 js-modal-trigger" data-target="jobsModal" type="submit" >
+                                        </form>
                                     </div>
                                 <div class="notification ">
                                     <div class="box ">

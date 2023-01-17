@@ -1,7 +1,7 @@
 // Calls the AccuWeather API (Nested Promise - First call to Location API to get location Key. Second Call to daily forecast API for weather information)
 function getAccuWeatherAPI() {
   var searchCity = $("#userWeatherInput").val();
-  var APIKey = "G7TFrvoMDfSH4fn8av5CZDJviR257GdG";
+  var APIKey = "mobJh4usQlzPJNXy13N6BV9ShPTAiU0g";
   var requestURL = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=" + APIKey + "&q=" + searchCity;
 
    fetch(requestURL)
@@ -211,7 +211,7 @@ $(function () {
   })
   $(document).on("submit", function(clickCity){
     clickCity.preventDefault();
-    console.log(clickCity)
+    console.log(clickCity);
     getAccuWeatherAPI();
   });
 });

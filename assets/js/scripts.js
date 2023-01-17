@@ -2,7 +2,7 @@
 var searchCity = "San Francisco";
 var APIKey = "G7TFrvoMDfSH4fn8av5CZDJviR257GdG";
 var requestURL = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=" + APIKey + "&q=" + searchCity;
-
+var tempHolder = document.querySelector("#temp")
 
 
 // Calls the AccuWeather API (Nested Promise - First call to Location API to get location Key. Second Call to daily forecast API for weather information)
@@ -27,20 +27,26 @@ function getAccuWeatherAPI() {
    .then(function(response) {
     return response.json();
    })
+
    .then(function(data5day) {
     console.log(data5day);
     console.log(data5day.DailyForecasts);
     console.log(data5day.Headline);
     console.log(data5day.DailyForecasts.length)
 
-    $("#day1").append(data5day.DailyForecasts[0].Date);
+  //  .then(function(weatherData) {
+  //   console.log(weatherData);
+  //  });
+
+  var icons = document.createElement("img")
+  icons.src = "https://developer.accuweather.com/sites/default/files/01-s.png"
+  console.log("Check out", icons)
+    tempHolder.append("https://developer.accuweather.com/sites/default/files/01-s.png");
+    // $("#day1").append(data5day.DailyForecastsIcn[0].Date);
     $("#day2").append(data5day.DailyForecasts[1].Date);
     $("#day3").append(data5day.DailyForecasts[2].Date);
-    $("#day4").append(data5day.DailyForecasts[3].Date);
+    // $("#day4").append(data5day.DailyForecasts[3].Date);
     $("#day5").append(data5day.DailyForecasts[4].Date);
-
-    $("#current-humdity").append(data5day.DailyForecasts[0].Day.IconPhrase);
-
 
 
     for (i = 1; i < data5day.DailyForecast[i].length; i++) {
@@ -48,6 +54,8 @@ function getAccuWeatherAPI() {
      if (i == data5day.DailyForecast[i].length){
       $("#day1").append(data5day.DailyForecasts[i].Date);
      };
+
+// this function will be populating the job results query.
 
 
 
@@ -66,97 +74,169 @@ $(document).on("submit", function(clickCity){
 
 
 
+// Calls the adzuna job board API
+function getJobsAPI() {
+  var appID = "a1161bda";
+  var jobsAPIKey = "3cbd548d24f2c7935ae4266b18c9a165";
+  var jobsURL = "https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=" + appID + "&app_key=" + jobsAPIKey + "&results_per_page=25&what=software%20engineer";
+
+// Calls the adzuna jobboard API
+// listens for jobs search click
+var userInput= document.getElementById('userInput');
+var userCitySearch = document.getElementById('userCitySearch');
 
 
-// //listens for jobs search click
-// document.querySelector("#jobbtn").addEventListener("click",function(event){
-//   event.preventDefault()
-// alert(event)
-// })
+document.querySelector("#jobbtn").addEventListener("click",function(event){
+event.preventDefault();
 
-// // this function will be populating the job results query.
-// var jobresults = document.querySelector("#jobresults");
-
-// function jobresults(result) {
-// console.log()
-
-
-// // Calls the adzuna job board API
-// function getJobsAPI() {
-//   var appID = "a1161bda";
-//   var jobsAPIKey = "3cbd548d24f2c7935ae4266b18c9a165";
-//   var jobsURL = "https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=" + appID + "&app_key=" + jobsAPIKey + "&results_per_page=25&what=software%20engineer";
-
-//   fetch(jobsURL)
-//       .then(function(response) {
-//       return response.json();
-//       })
-//       .then(function(data) {
-//       console.log(data);
-//       });
-
-// }
-
-
-// getJobsAPI();
-
-
-// document.querySelector("#housingbtn").addEventListener("click",function(event){
-//   event.preventDefault()
-// alert(event)
-
-// })
-
-// // Calls cola data USA API
-// function colaAPI(){
-//   var colaURL = "https://datausa.io/api/data?drilldowns=Place&measures=Population&year=latest";
-
-//   fetch(colaURL)
-//   .then(function(respons){
-//     return respons.json();
-//   })
-//   .then(function(colaData){
-//     console.log(colaData);
-//   })
-
-// }
+console.log(document.getElementById('userCitySearch').value + document.getElementById('userInput').value)
+ });
 
 
 
-// //colaAPI();
+function getJobsAPI() {
+  var appID = "a1161bda";
+  var jobsAPIKey = "3cbd548d24f2c7935ae4266b18c9a165";
+  var jobsURL = "https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=" + appID + "&app_key=" + jobsAPIKey + "&results_per_page=25&what=software%20engineer";
+
+fetch(jobsURL)
+.then(function(response) {
+if(!response.ok){
+throw response.json();
+}
+return response.json();
+ })
+ .then(function(jobsData){
+
+ console.log(jobsData);
+ console.log(jobsData.results[0]);
+ console.log(jobsData.results[0].location.display_name);
 
 
+for (var i = 1; i <= 25; i++) {
+  $("#results").append($("<tr><td>" + jobsData.results[i].title + "</td><td>" + jobsData.results[i].description + "</td><td>" + jobsData.results[i].location.display_name + "</td><td>$" + jobsData.results[i].salary_min + "-$" + jobsData.results[i].salary_max + "</td></tr>"));
+}
+});
 
-// // Toggles Jobs Container Visibility on nav link click
-// function showJobs() {
-//   $("#navJobs").on("click", function(){
-//     $("#jobsContainer").toggleClass("is-hidden");
-//   });
-// }
+};
+//getJobsAPI();
 
 
 
 
-// // Toggles Housing Container Visibilty on nav link click
-// function showHousing() {
-//   $("#navHousing").on("click", function(){
-//     $("#housingContainer").toggleClass("is-hidden");
-//   });
-// }
+document.querySelector("#housingbtn").addEventListener("click",function(event){
+  event.preventDefault()
+  alert(event)
 
-// // Runs the following functions on document load
-// $(document).ready(function() {
 
-//   showJobs();
-//   showHousing();
+  fetch(jobsURL)
+      .then(function(response) {
+      return response.json();
+      })
+      .then(function(data) {
+      console.log(data);
+      });
 
-//   // Check for click events on the navbar burger icon
-//   $(".navbar-burger").click(function() {
 
-//       // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-//       $(".navbar-burger").toggleClass("is-active");
-//       $(".navbar-menu").toggleClass("is-active");
+  })
 
-//   });
+}
 
-// });
+
+getJobsAPI();
+
+
+document.querySelector("#housingbtn").addEventListener("click",function(event){
+  event.preventDefault()
+alert(event)
+
+})
+
+
+// Calls cola data USA API
+function colaAPI(){
+
+  var colaURL = "https://datausa.io/api/data?drilldowns=Place&measures=Population&year=latest";
+
+  fetch(colaURL)
+  .then(function(response){
+  if(!response.ok){
+  throw response.json();
+ }
+
+  return response.json();
+  })
+  .then(function(coladata){
+    console.log(coladata);
+    console.log(coladata.data[0]);
+   console.log(coladata.results[0].Population);
+   console.log(coladata.results[0].Year);
+
+ for (var i = 1; i=1; i++){
+ $("#housingresults").append($(`<tr><td>${coladata.data[i].Place}</td><td>${coladata.data[i].Population}</td><td>\$${coladata.data[i].Year}</td></tr>`));
+}
+
+ });
+
+}
+colaAPI();
+
+// Toggles Weather Container Visibility on nav link click
+function showWeather() {
+  $("#navWeather").on("click", function() {
+    $("#weatherContainer").toggleClass("is-hidden");
+  });
+}
+
+// Toggles Jobs Container Visibility on nav link click
+function showJobs() {
+  $("#navJobs").on("click", function(){
+    $("#jobsContainer").toggleClass("is-hidden");
+  });
+}
+
+// Toggles Housing Container Visibilty on nav link click
+function showHousing() {
+  $("#navHousing").on("click", function(){
+    $("#housingContainer").toggleClass("is-hidden");
+  });
+}
+
+// Runs the following functions on document load
+$(document).ready(function() {
+
+  showWeather();
+  showJobs();
+  showHousing();
+
+  // Check for click events on the navbar burger icon
+  $(".navbar-burger").click(function() {
+
+      // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+      $(".navbar-burger").toggleClass("is-active");
+      $(".navbar-menu").toggleClass("is-active");
+
+  });
+
+
+});
+
+ // Weather Modal Close on click
+$(".modal-close").on("click", function() {
+  $("#weatherModal").removeClass("is-active");
+});
+
+
+// Weather Button Parsely.js validation function
+$(function () {
+  $('#userCitySearch').parsley().on('field:validated', function() {
+    var ok = $('.parsley-error').length === 0;
+    $("#weatherModal").toggleClass('is-active hidden', !ok);
+  })
+  .on('form:submit', function() {
+    return; // Get AccuWeatherAPI function goes here. It will run on form submit.
+  });
+});
+
+// Intro.Js tour start
+introJs().start();

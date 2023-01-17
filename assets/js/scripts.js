@@ -103,9 +103,6 @@ for (var i = 1; i <= 25; i++) {
 
   fetch(colaURL)
    .then(function(response){
-   if(!response.ok){
-  }
-
 
    return response.json();
    })
@@ -122,7 +119,7 @@ for (var i = 1; i <= 25; i++) {
   });
 
  }
-//  colaAPI();
+
 
  //Runs the following functions on document load
  $(document).ready(function() {

@@ -1,5 +1,5 @@
 // Variables
-var searchCity = "San Francisco";
+var searchCity = $("#userWeatherInput").val();
 var APIKey = "G7TFrvoMDfSH4fn8av5CZDJviR257GdG";
 var requestURL = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=" + APIKey + "&q=" + searchCity;
 
@@ -171,7 +171,7 @@ $(function () {
     $("#weatherModal").toggleClass('is-active hidden', !ok); 
   })
   .on('form:submit', function() {
-    return; // Get AccuWeatherAPI function goes here. It will run on form submit.
+    getAccuWeatherAPI();
   });
 });
 
@@ -182,18 +182,18 @@ $(function () {
     $("#jobsModal").toggleClass('is-active hidden', !ok); 
   })
   .on('form:submit', function() {
-    return; // Get JobsAPI function goes here.
+     // Get JobsAPI function goes here.
   });
 });
 
-// Houding Button Parsely.js validation function
+// Housing Button Parsely.js validation function
 $(function () {
   $('#housingSearch').parsley().on('field:validated', function() {
     var ok = $('.parsley-error').length === 0;
     $("#housingModal").toggleClass('is-active hidden', !ok); 
   })
   .on('form:submit', function() {
-    return; // Get JobsAPI function goes here.
+     // Get colaData function goes here.
   });
 });
 

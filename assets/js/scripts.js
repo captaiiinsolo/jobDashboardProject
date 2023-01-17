@@ -70,11 +70,11 @@ function getAccuWeatherAPI() {
 
 // Calls the adzuna job board API
 function getJobsAPI() {
-  var appID = "a1161bda";
+  var appID = "59959f13";
   var userjobinput = $("#userjobinput").val();
-  var userJobCitySearch =$("#userJobCitySearch").val()
-  var jobsAPIKey = "3cbd548d24f2c7935ae4266b18c9a165";
-  var jobsURL = "https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=" + appID + "&app_key=" + jobsAPIKey + "&results_per_page=25&what=" + userjobinput + "&location1=" + userJobCitySearch;
+  var userJobCitySearch =$("#userJobCitySearch").val();
+  var jobsAPIKey = "009140e57af618149df1a7e6ca66d05b";
+  var jobsURL = "https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=" + appID + "&app_key=" + jobsAPIKey + "&results_per_page=25&what=" + userjobinput + "&where=" + userJobCitySearch;
 
   fetch(jobsURL)
   .then(function(response) {
@@ -92,22 +92,17 @@ for (var i = 1; i <= 25; i++) {
   $("#results").append($("<tr><td>" + jobsData.results[i].title + "</td><td>" + jobsData.results[i].description + "</td><td>" + jobsData.results[i].location.display_name + "</td><td>$" + jobsData.results[i].salary_min + "-$" + jobsData.results[i].salary_max + "</td></tr>"));
 }
 });
-
-
 }
-//getJobsAPI();
+
 
 
 //  Calls cola data USA API
  function colaAPI(){
-
- var colaURL = "https://datausa.io/api/data?drilldowns=Place&measures=Population&year=latest";
+ var housingbtn =$("#housingbtn").val()
+ var colaURL = "https://datausa.io/api/data?drilldowns=Place&measures=Population&year=latest" + housingbtn;
 
   fetch(colaURL)
    .then(function(response){
-   if(!response.ok){
-  }
-
 
    return response.json();
    })
@@ -124,7 +119,7 @@ for (var i = 1; i <= 25; i++) {
   });
 
  }
-//  colaAPI();
+
 
  //Runs the following functions on document load
  $(document).ready(function() {
@@ -137,28 +132,28 @@ for (var i = 1; i <= 25; i++) {
 });
  });
 
-// // Toggles Weather Container Visibility on nav link click
+// Toggles Weather Container Visibility on nav link click
  function showWeather() {
   $("#navWeather").on("click", function() {
     $("#weatherContainer").toggleClass("is-hidden");
   });
  }
 
-// // Toggles Jobs Container Visibility on nav link click
+// Toggles Jobs Container Visibility on nav link click
  function showJobs() {
   $("#navJobs").on("click", function(){
     $("#jobsContainer").toggleClass("is-hidden");
    });
  }
 
-// // Toggles Housing Container Visibilty on nav link click
+// Toggles Housing Container Visibilty on nav link click
  function showHousing() {
   $("#navHousing").on("click", function(){
      $("#housingContainer").toggleClass("is-hidden");
    });
  }
 
-// // Runs the following functions on document load
+// Runs the following functions on document load
  $(document).ready(function() {
 
   showWeather();
@@ -178,7 +173,7 @@ for (var i = 1; i <= 25; i++) {
  });
 
 
-// // Weather Button Parsely.js validation function
+// Weather Button Parsely.js validation function
  $(function () {
   $('#userCitySearch').parsley().on('field:validated', function() {
     var ok = $('.parsley-error').length === 0;
@@ -223,6 +218,7 @@ $(function () {
     $("#jobsModal").toggleClass('is-active hidden', !ok);
   })
   .on('form:submit', function() {
+    $("#results").empty();
     getJobsAPI(); // Get JobsAPI function goes here.
   });
 });
@@ -234,7 +230,7 @@ $(function () {
     $("#housingModal").toggleClass('is-active hidden', !ok);
   })
   .on('form:submit', function() {
-     // Get colaData function goes here.
+    getcolaAPI();
   });
 });
 

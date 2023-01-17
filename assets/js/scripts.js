@@ -7,9 +7,6 @@ var requestURL = "http://dataservice.accuweather.com/locations/v1/cities/search?
 
 // Calls the AccuWeather API (Nested Promise - First call to Location API to get location Key. Second Call to daily forecast API for weather information)
 function getAccuWeatherAPI() {
-  // var searchCity = "san diego";
-  // var APIKey = "G7TFrvoMDfSH4fn8av5CZDJviR257GdG";
-  // var requestURL = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=" + APIKey + "&q=" + searchCity;
 
    fetch(requestURL)
    .then(function(response) {
@@ -70,9 +67,6 @@ $(document).on("submit", function(clickCity){
 
 // Calls the adzuna jobboard API
 //listens for jobs search click
-//var userInput= document.getElementById('userInput');
-//var userCitySearch = document.getElementById('userCitySearch');
-
 
 document.querySelector("#jobbtn").addEventListener("click",function(event){
 event.preventDefault();
@@ -133,10 +127,7 @@ function colaAPI(){
   return response.json();
   })
   .then(function(coladata){
-    //console.log(coladata);
-    console.log(coladata.data[0]);
-   // console.log(coladata.results[0].Population);
-   // console.log(coladata.results[0].Year);
+
 
  for (var i = 1; i=1; i++){
  $("#housingresults").append($(`<tr><td>${coladata.data[i].Place}</td><td>${coladata.data[i].Population}</td><td>\$${coladata.data[i].Year}</td></tr>`));
@@ -163,45 +154,31 @@ function showHousing() {
 
 
 
-// // Toggles Jobs Container Visibility on nav link click
-// function showJobs() {
-//   $("#navJobs").on("click", function(){
-//     $("#jobsContainer").toggleClass("is-hidden");
-//   });
-// }
-
- //showWeather();
-  //showJobs();
-  //showHousing();
+// Toggles Jobs Container Visibility on nav link click
+function showJobs() {
+   $("#navJobs").on("click", function(){
+    $("#jobsContainer").toggleClass("is-hidden");
+   });
+ }
 
 
 
 
 
-// // Toggles Housing Container Visibilty on nav link click
-// function showHousing() {
-//   $("#navHousing").on("click", function(){
-//     $("#housingContainer").toggleClass("is-hidden");
-//   });
-// }
-
-// // Runs the following functions on document load
-// $(document).ready(function() {
-
-//   showJobs();
-//   showHousing();
-
-//   // Check for click events on the navbar burger icon
-//   $(".navbar-burger").click(function() {
-
-//       // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-//       $(".navbar-burger").toggleClass("is-active");
-//       $(".navbar-menu").toggleClass("is-active");
-
-//   });
 
 
-// });
+ //Runs the following functions on document load
+ $(document).ready(function() {
+  showJobs();   showHousing();
+   // Check for click events on the navbar burger icon
+  $(".navbar-burger").click(function() {
+       // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"       $(".navbar-burger").toggleClass("is-active");
+      $(".navbar-menu").toggleClass("is-active")
+ 
+});
+
+
+});
 
  // Weather Modal Close on click
 $(".modal-close").on("click", function() {

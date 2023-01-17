@@ -20,7 +20,7 @@ FullSpectrum is a website that was created to optimize your inquiries about your
     // Recording of the tour website
 
 # Github Accounts
-- Deployed Link - https://captaiiinsolo.github.io/jobDashboardProject/
+- Deployed Link - [https://captaiiinsolo.github.io/jobDashboardProject/]
 
 - Ashley Sese -
 - Edwin Hernandez -
@@ -28,9 +28,9 @@ FullSpectrum is a website that was created to optimize your inquiries about your
 
 # Contacts
 - Linkedin
-    - Ashley -> https://www.linkedin.com/in/ashleyrean/
-    - Edwin -> https://www.linkedin.com/in/edwin-hernandez-0294aa13/
-    - Solomon -> https://www.linkedin.com/in/solomon-santos/
+    - Ashley [https://www.linkedin.com/in/ashleyrean/]
+    - Edwin [https://www.linkedin.com/in/edwin-hernandez-0294aa13/]
+    - Solomon  [https://www.linkedin.com/in/solomon-santos/]
 
 # Images
 // Still images of the website
@@ -39,7 +39,9 @@ FullSpectrum is a website that was created to optimize your inquiries about your
 // Solomon code snippets
 
 # Resources
-// API Documents - websites
+- API Documents
+    - Accu Weather [https://developer.accuweather.com/accuweather-forecast-api/apis]
+    - Adzuna [https://developer.adzuna.com/]
 - Books:
     - Javascipt (6th Edition) by Mike McGrath
 

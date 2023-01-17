@@ -32,7 +32,7 @@ function getAccuWeatherAPI() {
     console.log(data5day);
     console.log(data5day.DailyForecasts);
     console.log(data5day.Headline);
-    console.log(data5day.DailyForecasts.length)
+
 
 
 
@@ -61,19 +61,6 @@ function getAccuWeatherAPI() {
     $("#day4").append(data5day.DailyForecasts[4].Date);
     $("#current-temp4").append(data5day.DailyForecasts[4].Temperature.Maximum.Value);
     $("#temp-phrase4").append(data5day.DailyForecasts[4].Day.IconPhrase);
-
-    // For loop to iterate the days to each individual cards
-  //   for (i = 1; i < data5day.DailyForecast[i].length; i++) {
-  //   console.log(data5day.DailyForecast[i].Date)
-  //    if (i == data5day.DailyForecast[i].length){
-  //     $("#day1").append(data5day.DailyForecasts[i].Date);
-  //    };
-  //  }
-
-   // For loop to iterate the temo to individual cards
-  //  for (i=0; i<data5day.DailyForecast[i].length; i++){
-  //   console.log(data5day.DailyForecast[i].Temperature.Maximum.Value)
-  // }
 
 
 
@@ -165,97 +152,94 @@ document.querySelector("#housingbtn").addEventListener("click",function(event){
 getJobsAPI();
 
 
-// document.querySelector("#housingbtn").addEventListener("click",function(event){
-//   event.preventDefault()
-// alert(event)
+document.querySelector("#housingbtn").addEventListener("click",function(event){
+     event.preventDefault()
+  alert(event)
 
-// })
+ })
 
+//  Calls cola data USA API
+ function colaAPI(){
 
-// // Calls cola data USA API
-// function colaAPI(){
+ var colaURL = "https://datausa.io/api/data?drilldowns=Place&measures=Population&year=latest";
 
-//   var colaURL = "https://datausa.io/api/data?drilldowns=Place&measures=Population&year=latest";
+  fetch(colaURL)
+   .then(function(response){
+   if(!response.ok){
+  }
 
-//   fetch(colaURL)
-//   .then(function(response){
-//   if(!response.ok){
-//   throw response.json();
-//  }
+   return response.json();
+   })
+   .then(function(coladata){
+    console.log(coladata);
+    console.log(coladata.data[0]);
+    console.log(coladata.results[0].Population);
+   console.log(coladata.results[0].Year);
 
-//   return response.json();
-//   })
-//   .then(function(coladata){
-//     console.log(coladata);
-//     console.log(coladata.data[0]);
-//    console.log(coladata.results[0].Population);
-//    console.log(coladata.results[0].Year);
+ for (var i = 1; i=1; i++){
+ $("#housingresults").append($(`<tr><td>${coladata.data[i].Place}</td><td>${coladata.data[i].Population}</td><td>\$${coladata.data[i].Year}</td></tr>`));
+ }
 
-//  for (var i = 1; i=1; i++){
-//  $("#housingresults").append($(`<tr><td>${coladata.data[i].Place}</td><td>${coladata.data[i].Population}</td><td>\$${coladata.data[i].Year}</td></tr>`));
-// }
+  });
 
-//  });
-
-// }
-// colaAPI();
+ }
+ colaAPI();
 
 // // Toggles Weather Container Visibility on nav link click
-// function showWeather() {
-//   $("#navWeather").on("click", function() {
-//     $("#weatherContainer").toggleClass("is-hidden");
-//   });
-// }
+ function showWeather() {
+  $("#navWeather").on("click", function() {
+    $("#weatherContainer").toggleClass("is-hidden");
+  });
+ }
 
 // // Toggles Jobs Container Visibility on nav link click
-// function showJobs() {
-//   $("#navJobs").on("click", function(){
-//     $("#jobsContainer").toggleClass("is-hidden");
-//   });
-// }
+ function showJobs() {
+  $("#navJobs").on("click", function(){
+    $("#jobsContainer").toggleClass("is-hidden");
+   });
+ }
 
 // // Toggles Housing Container Visibilty on nav link click
-// function showHousing() {
-//   $("#navHousing").on("click", function(){
-//     $("#housingContainer").toggleClass("is-hidden");
-//   });
-// }
+ function showHousing() {
+  $("#navHousing").on("click", function(){
+     $("#housingContainer").toggleClass("is-hidden");
+   });
+ }
 
 // // Runs the following functions on document load
-// $(document).ready(function() {
+ $(document).ready(function() {
 
-//   showWeather();
-//   showJobs();
-//   showHousing();
+  showWeather();
+  showJobs();
+   showHousing();
 
-//   // Check for click events on the navbar burger icon
-//   $(".navbar-burger").click(function() {
+  // Check for click events on the navbar burger icon
+ $(".navbar-burger").click(function() {
 
-//       // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-//       $(".navbar-burger").toggleClass("is-active");
-//       $(".navbar-menu").toggleClass("is-active");
+    // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+     $(".navbar-burger").toggleClass("is-active");
+      $(".navbar-menu").toggleClass("is-active");
 
-//   });
+  });
 
 
-// });
+ });
 
-//  // Weather Modal Close on click
-// $(".modal-close").on("click", function() {
-//   $("#weatherModal").removeClass("is-active");
-// });
+ // Weather Modal Close on click
+ $(".modal-close").on("click", function() {
+  $("#weatherModal").removeClass("is-active");
+ });
 
 
 // // Weather Button Parsely.js validation function
-// $(function () {
-//   $('#userCitySearch').parsley().on('field:validated', function() {
-//     var ok = $('.parsley-error').length === 0;
-//     $("#weatherModal").toggleClass('is-active hidden', !ok);
-//   })
-//   .on('form:submit', function() {
-//     return; // Get AccuWeatherAPI function goes here. It will run on form submit.
-//   });
-// });
+ $(function () {
+  $('#userCitySearch').parsley().on('field:validated', function() {
+    var ok = $('.parsley-error').length === 0;
+  })
+ .on('form:submit', function() {
+   return; // Get AccuWeatherAPI function goes here. It will run on form submit.
+  });
+ });
 
-// // Intro.Js tour start
+// Intro.Js tour start
 // introJs().start();

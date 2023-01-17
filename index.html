@@ -63,13 +63,13 @@
             <div id="weatherContainer" class="column is-one-third">
 
                 <!-- Parsely Callout for form validation -->
-                <div id="weatherModal" class="modal bs-callout bs-callout-warning hidden">
+                <div id="weatherModal" class="modal bs-callout bs-callout-warning hidden has-text-centered">
                     <div class="modal-background"></div>
                     <div class="modal-content">
-                        <div class="box">
+                        <div class="box has-background-danger">
                             <div>
-                                <p class="title">Oh snap!</p>
-                                <p class="sub-title">Please enter a US City</p>
+                                <p class="title has-text-white">Weather Search Error:</p>
+                                <p class="sub-title has-text-white">Please enter a US City</p>
                             </div>
                         </div>
                     </div>
@@ -84,7 +84,7 @@
                         <label class="label"></label>
                         <div class="control">
                             <h1> Weather </h1>
-                            <input id="userInput" type="text" class="input" placeholder="Enter city" data-parsley-length="[3, 30]" required="">
+                            <input id="userWeatherInput" type="text" class="input" placeholder="Enter city" data-parsley-length="[3, 30]" required="">
                         </div>
                         <div class="mt-4">
                             <input id="searchBtn" type="submit" class="button is-info is-fullwidth js-modal-trigger" data-target="weatherModal" value="Search">
@@ -172,27 +172,38 @@
                 <div class="container has-text-left">
                         <div class="columns">
                             <div class="column">
+
+                                       <!-- Parsely Callout for form validation -->
+                                <div id="jobsModal" class="modal bs-callout bs-callout-warning hidden has-text-centered">
+                                    <div class="modal-background"></div>
+                                    <div class="modal-content">
+                                        <div class="box has-background-danger">
+                                            <div>
+                                                <p class="title has-text-white">Job Search Error</p>
+                                                <p class="sub-title has-text-white">Please enter a job title between 1 and 30 characters long</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="modal-close is-large" aria-label="close"></button>
+                                </div>
+
                                 <div id="jobsContainer" class="box" data-intro="This is the is the jobs section. Here you can search for jobs by their title, location, or both. Job listings will populate below." data-step="6 of 8">
                                     <div class="container mb-6">
                                        <div class="columns">
                                         <div class="column">
                                             <p class="title">JOBS</p>
                                         </div>
-                                        <div class="column">
-                                            <input id= "userInput" type="text" class="input" placeholder=" JOB TITLE ">
-                                        </div>
-                                        <div class="column">
-                                            <input id= "userCitySearch" type="text" class="input" placeholder=" LOCATION ">
-                                       </div>
-                                       <div class="colummn">
-                                        <input id="jobbtn" class="button auto is-rounded mt-3" type="submit" >
-                                       </div>
+                                        <form action="" id="jobsSearch">
+                                            <input id= "userInput" type="text" class="input is-inline mt-4 mr-2" placeholder=" JOB TITLE " required="" data-parsley-length="[1, 30]">
+                                            <input id= "userCitySearch" type="text" class="input is-inline mt-4 mr-2" placeholder=" LOCATION " data-parsley-length="[1, 30]">
+                                            <input id="jobbtn" class="button auto is-rounded js-modal-trigger mt-4 mr-2" data-target="jobsModal" type="submit" >
+                                        </form>
                                     </div>
                                 <div class="notification ">
                                     <div class="box ">
                                     <div class="media-content">
                                         <div id="job" class="content">
-                                            <div class="col-12 col-md-9 p-3 text-light"></div>
+                                            <div class="col-12 col-md-9 p-1 text-light"></div>
                                          <table id="results">
                                             <tr>
                                                 <th>Title</th>
@@ -214,16 +225,31 @@
                             <div class="container has-text-left">
                                     <div class="columns">
                                         <div class="column">
+
+                                                <!-- Parsely Callout for form validation -->
+                                                <div id="housingModal" class="modal bs-callout bs-callout-warning hidden has-text-centered">
+                                                    <div class="modal-background"></div>
+                                                    <div class="modal-content">
+                                                        <div class="box has-background-danger">
+                                                            <div>
+                                                                <p class="title has-text-white">Housing Search Error</p>
+                                                                <p class="sub-title has-text-white">Please enter a US City to begin your search</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <button class="modal-close is-large" aria-label="close"></button>
+                                                </div>
+
                                             <div id="housingContainer" class="box" data-intro="This is the is the Housing section. Search by city to receive housing statistics for that area" data-step="7 of 8">
                                                 <div class="container  mb-6">
+                                                   <div class="columns">
                                                     <div class="column">
                                                         <p class="title">Housing</p>
                                                     </div>
-                                                    <div class="column">
-                                                        <input type="text" class="input" placeholder=" LOCATION ">
-                                                   </div>
-                                                   <div class="colummn">
-                                                    <input id="housingbtn" class="button auto is-rounded mt-3" type="submit" >
+                                                    <form action="" id="housingSearch">
+                                                    <input type="text" class="input is-inline mt-4" placeholder=" LOCATION " required="" data-parsley-length="[1, 30]">
+                                                    <input id="housingbtn" class="button auto mt-4 mr-2 is-rounded js-modal-trigger is-inline" type="submit" data-target="housingModal">
+                                                    </form>
                                                    </div>
                                                 </div>
                                             <div class="notification ">

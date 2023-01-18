@@ -97,28 +97,26 @@ for (var i = 1; i <= 25; i++) {
 
 
 //  Calls cola data USA API
- function colaAPI(){
- var housingbtn =$("#housingbtn").val();
- var colaURL = "https://datausa.io/api/data?drilldowns=Place&measures=Population&year=latest" + housingbtn;
+ function getcolaAPI(){
+ var userhousingsearch =$("#userhousingsearch").val();
+ var colaURL = "https://datausa.io/api/data?drilldowns=State&measures=Population&year=latest" + userhousingsearch;
 
   fetch(colaURL)
    .then(function(response){
-
+  
    return response.json();
    })
    .then(function(coladata){
-    console.log(coladata);
     console.log(coladata.data[0]);
-    console.log(coladata.results[0].Population);
-   console.log(coladata.results[0].Year);
+    
+  
 
- for (var i = 1; i=1; i++){
+ for (var i = 1; i<=25; i++){
  $("#housingresults").append($(`<tr><td>${coladata.data[i].Place}</td><td>${coladata.data[i].Population}</td><td>\$${coladata.data[i].Year}</td></tr>`));
  }
-
-  });
-
+ }); 
  }
+ getcolaAPI()
 
 
  //Runs the following functions on document load
@@ -207,7 +205,7 @@ $(function () {
   $(document).on("submit", function(clickCity){
     clickCity.preventDefault();
     console.log(clickCity);
-    getAccuWeatherAPI();
+    //getAccuWeatherAPI();
   });
 });
 
@@ -219,13 +217,13 @@ $(function () {
   })
   .on('form:submit', function() {
     $("#results").empty();
-    getJobsAPI(); // Get JobsAPI function goes here.
+   //getJobsAPI(); // Get JobsAPI function goes here.
   });
 });
 
 // Housing Button Parsely.js validation function
 $(function () {
-  $('#housingSearch').parsley().on('field:validated', function() {
+  $('#userhousingsearch').parsley().on('field:validated', function() {
     var ok = $('.parsley-error').length === 0;
     $("#housingModal").toggleClass('is-active hidden', !ok);
   })

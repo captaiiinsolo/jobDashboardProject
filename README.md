@@ -17,7 +17,8 @@ FullSpectrum is a website that was created to optimize your inquiries about your
 
 
 # Installation Instructions
-    // Recording of the tour website
+### Site Tour
+![Site Tour](./assets/gifs/introJS_Tour.gif)
 
 # Github Accounts
 - Deployed Link - [https://captaiiinsolo.github.io/jobDashboardProject/]
@@ -33,7 +34,30 @@ FullSpectrum is a website that was created to optimize your inquiries about your
     - Solomon  [https://www.linkedin.com/in/solomon-santos/]
 
 # Images
-// Still images of the website
+
+### Weather Section
+ Weather Visibility
+![Weather Visibility](./assets/gifs/weather_Visibility.gif)
+
+Weather Functionality
+![Weather Functionaliy](./assets/gifs/weather_Functionality.gif)
+
+
+### Jobs Section
+Jobs Visibilty
+![Jobs Visibilty](./assets/gifs/jobs_Visibility.gif)
+
+Jobs Functionality
+![Jobs Functionality](./assets/gifs/jobs_Functionality.gif)
+
+
+### Census Section
+Census Visibilty
+![Jobs Visibilty](./assets/gifs/Census_Visibility.gif)
+
+Census Functionality
+![Jobs Functionality](./assets/gifs/census_Functionality.gif)
+
 
 # Code Snippets
 - Weather
@@ -70,4 +94,3 @@ FullSpectrum is a website that was created to optimize your inquiries about your
 - Edwin Hernandez
 - Solomon Santos
 
-# Learning Points

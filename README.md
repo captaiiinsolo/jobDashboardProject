@@ -47,10 +47,10 @@ FullSpectrum is a website that was created to optimize your inquiries about your
  ```$("#results").append($("<tr><td>" + jobsData.results[i].title + "</td><td>" + jobsData.results
  ```[i].description + "</td><td>" + jobsData.results[i].location.display_name + "</td><td>$" + ```jobsData.results[i].salary_min + "-$" + jobsData.results[i].salary_max + "</td></tr>"));
 
--Housing
+-Census Data
+    This Census Data of the code appends the chosen data to the webpage.
+```$("#housingresults").append($("<tr><td>" + coladata.data[i].Population + "</td><td>" + coladata.```data[i].State + "</td><td>" + coladata.data[i].Year + "</td></tr>" ));
 
-
-- Validation/Toggle
 
 # Resources
 - API Documents

@@ -169,17 +169,6 @@ for (var i = 1; i <= 25; i++) {
 
  });
 
-
-// Weather Button Parsely.js validation function
- $(function () {
-  $('#userCitySearch').parsley().on('field:validated', function() {
-    var ok = $('.parsley-error').length === 0;
-  })
- .on('form:submit', function() {
-   return; // Get AccuWeatherAPI function goes here. It will run on form submit.
-  });
- });
-
  // Weather Modal Close on click
 $(".modal-close").on("click", function() {
   $("#weatherModal").removeClass("is-active");
@@ -234,3 +223,4 @@ $(function () {
 
 // Intro.Js tour start
 introJs().start();
+//final check

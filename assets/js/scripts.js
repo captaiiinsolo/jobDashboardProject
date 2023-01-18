@@ -10,7 +10,7 @@ function getAccuWeatherAPI() {
    })
    .then(function(dataRequest) {
     console.log(dataRequest);
-    // console.log(dataRequest[0].Key); //Logs the city key we need to make other requests using Accuweathers other APIs
+    console.log(dataRequest[0].Key); //Logs the city key we need to make other requests using Accuweathers other APIs
 
     var cityKey = dataRequest[0].Key; // 347629 is the value of data[0].Key but console says its not defined.
 
@@ -97,24 +97,26 @@ for (var i = 1; i <= 25; i++) {
 
 
 //  Calls cola data USA API
- function getcolaAPI(){
- var userhousingsearch =$("#userhousingsearch").val();
- var colaURL = "https://datausa.io/api/data?drilldowns=State&measures=Population&year=latest" + userhousingsearch;
+ function colaAPI(){
+ var housingbtn =$("#housingbtn").val()
+ var colaURL = "https://datausa.io/api/data?drilldowns=Place&measures=Population&year=latest" + housingbtn;
 
   fetch(colaURL)
    .then(function(response){
-  
+
    return response.json();
    })
    .then(function(coladata){
-    console.log(coladata.data[0]);
+
     
   
 
- for (var i = 1; i<=25; i++){
- $("#housingresults").append($(`<tr><td>${coladata.data[i].Place}</td><td>${coladata.data[i].Population}</td><td>\$${coladata.data[i].Year}</td></tr>`));
+ for (var i = 1; i<=52; i++){
+ $("#housingresults").append($("<tr><td>" + coladata.data[i].Population + "</td><td>" + coladata.data[i].State + "</td><td>" + coladata.data[i].Year + "</td></tr>" ));
  }
- }); 
+
+  });
+
  }
  getcolaAPI()
 
@@ -204,7 +206,8 @@ $(function () {
   })
   $(document).on("submit", function(clickCity){
     clickCity.preventDefault();
-
+    console.log(clickCity);
+   
     $("#day0").empty();
     $("#day1").empty();
     $("#day2").empty();
@@ -223,20 +226,22 @@ $(function () {
   })
   .on('form:submit', function() {
     $("#results").empty();
-   //getJobsAPI(); // Get JobsAPI function goes here.
+    //getJobsAPI(); // Get JobsAPI function goes here.
   });
 });
 
 // Housing Button Parsely.js validation function
 $(function () {
-  $('#userhousingsearch').parsley().on('field:validated', function() {
+  $('#housingSearch').parsley().on('field:validated', function() {
     var ok = $('.parsley-error').length === 0;
     $("#housingModal").toggleClass('is-active hidden', !ok);
   })
   .on('form:submit', function() {
-    getcolaAPI();
+    $("#housingresults").empty();
+    
   });
 });
 
 // Intro.Js tour start
 introJs().start();
+//final check

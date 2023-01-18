@@ -42,7 +42,12 @@ FullSpectrum is a website that was created to optimize your inquiries about your
    ``` $("#current-temp0").append(data5day.DailyForecasts[0].Temperature.Maximum.Value);
    ``` $("#temp-phrase0").append(data5day.DailyForecasts[0].Day.IconPhrase);
 
-- Jobs/Housing
+- Jobs
+    This Job section of the code appends the chosen data to the webpage.
+ ```$("#results").append($("<tr><td>" + jobsData.results[i].title + "</td><td>" + jobsData.results
+ ```[i].description + "</td><td>" + jobsData.results[i].location.display_name + "</td><td>$" + ```jobsData.results[i].salary_min + "-$" + jobsData.results[i].salary_max + "</td></tr>"));
+
+-Housing
 
 
 - Validation/Toggle

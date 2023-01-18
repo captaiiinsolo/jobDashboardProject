@@ -10,7 +10,7 @@ function getAccuWeatherAPI() {
    })
    .then(function(dataRequest) {
     console.log(dataRequest);
-    console.log(dataRequest[0].Key); //Logs the city key we need to make other requests using Accuweathers other APIs
+    // console.log(dataRequest[0].Key); //Logs the city key we need to make other requests using Accuweathers other APIs
 
     var cityKey = dataRequest[0].Key; // 347629 is the value of data[0].Key but console says its not defined.
 
@@ -30,28 +30,28 @@ function getAccuWeatherAPI() {
 
     // Day 1
     $("#day0").append(dayjs(data5day.DailyForecasts[0].Date).format(" dddd MMMM DD, YYYY "));
-    $("#current-temp0").append(data5day.DailyForecasts[0].Temperature.Maximum.Value);
+    $("#current-temp0").append(data5day.DailyForecasts[0].Temperature.Maximum.Value + "F");
     $("#temp-phrase0").append(data5day.DailyForecasts[0].Day.IconPhrase);
 
 
     // Day2
     $("#day1").append(dayjs(data5day.DailyForecasts[1].Date).format(" dddd MMMM DD, YYYY  "));
-    $("#current-temp1").append(data5day.DailyForecasts[1].Temperature.Maximum.Value);
+    $("#current-temp1").append(data5day.DailyForecasts[1].Temperature.Maximum.Value + "F");
     $("#temp-phrase1").append(data5day.DailyForecasts[1].Day.IconPhrase);
 
     //Day3
     $("#day2").append(dayjs(data5day.DailyForecasts[2].Date).format(" dddd MMMM DD, YYYY  "));
-    $("#current-temp2").append(data5day.DailyForecasts[2].Temperature.Maximum.Value);
+    $("#current-temp2").append(data5day.DailyForecasts[2].Temperature.Maximum.Value + "F");
     $("#temp-phrase2").append(data5day.DailyForecasts[2].Day.IconPhrase);
 
     //Day4
     $("#day3").append(dayjs(data5day.DailyForecasts[3].Date).format(" dddd MMMM DD, YYYY  "));
-    $("#current-temp3").append(data5day.DailyForecasts[3].Temperature.Maximum.Value);
+    $("#current-temp3").append(data5day.DailyForecasts[3].Temperature.Maximum.Value + "F");
     $("#temp-phrase3").append(data5day.DailyForecasts[3].Day.IconPhrase);
 
     //Day5
     $("#day4").append(dayjs(data5day.DailyForecasts[4].Date).format(" dddd MMMM DD, YYYY   "));
-    $("#current-temp4").append(data5day.DailyForecasts[4].Temperature.Maximum.Value);
+    $("#current-temp4").append(data5day.DailyForecasts[4].Temperature.Maximum.Value + "F");
     $("#temp-phrase4").append(data5day.DailyForecasts[4].Day.IconPhrase);
 
 

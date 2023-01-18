@@ -22,9 +22,9 @@ FullSpectrum is a website that was created to optimize your inquiries about your
 # Github Accounts
 - Deployed Link - [https://captaiiinsolo.github.io/jobDashboardProject/]
 
-- Ashley Sese -
-- Edwin Hernandez -
-- Solomon Santos -
+- Ashley Sese - https://github.com/ashrean
+- Edwin Hernandez - https://github.com/EdwinHdz04
+- Solomon Santos - https://github.com/captaiiinsolo
 
 # Contacts
 - Linkedin
@@ -36,7 +36,16 @@ FullSpectrum is a website that was created to optimize your inquiries about your
 // Still images of the website
 
 # Code Snippets
-// Solomon code snippets
+- Weather
+    This weather section of the code displays the day, date the current temp 
+  ```  $("#day0").append(dayjs(data5day.DailyForecasts[0].Date).format(" dddd MMMM DD, YYYY "));
+   ``` $("#current-temp0").append(data5day.DailyForecasts[0].Temperature.Maximum.Value);
+   ``` $("#temp-phrase0").append(data5day.DailyForecasts[0].Day.IconPhrase);
+
+- Jobs/Housing
+
+
+- Validation/Toggle
 
 # Resources
 - API Documents
@@ -47,7 +56,7 @@ FullSpectrum is a website that was created to optimize your inquiries about your
 - Libraries
     - Intro.JS [https://introjs.com/]
     - Parsley.JS [https://parsleyjs.org/]
-    
+
 - Books:
     - Javascipt (6th Edition) by Mike McGrath
 

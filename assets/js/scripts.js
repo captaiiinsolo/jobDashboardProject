@@ -29,29 +29,29 @@ function getAccuWeatherAPI() {
     // Appending the data to each daily card for the 5 day section
 
     // Day 1
-    $("#day0").append(data5day.DailyForecasts[0].Date);
-    $("#current-temp0").append(data5day.DailyForecasts[0].Temperature.Maximum.Value);
+    $("#day0").append(dayjs(data5day.DailyForecasts[0].Date).format(" dddd MMMM DD, YYYY "));
+    $("#current-temp0").append(data5day.DailyForecasts[0].Temperature.Maximum.Value + "F");
     $("#temp-phrase0").append(data5day.DailyForecasts[0].Day.IconPhrase);
 
 
     // Day2
-    $("#day1").append(data5day.DailyForecasts[1].Date);
-    $("#current-temp1").append(data5day.DailyForecasts[1].Temperature.Maximum.Value);
+    $("#day1").append(dayjs(data5day.DailyForecasts[1].Date).format(" dddd MMMM DD, YYYY  "));
+    $("#current-temp1").append(data5day.DailyForecasts[1].Temperature.Maximum.Value + "F");
     $("#temp-phrase1").append(data5day.DailyForecasts[1].Day.IconPhrase);
 
     //Day3
-    $("#day2").append(data5day.DailyForecasts[2].Date);
-    $("#current-temp2").append(data5day.DailyForecasts[2].Temperature.Maximum.Value);
+    $("#day2").append(dayjs(data5day.DailyForecasts[2].Date).format(" dddd MMMM DD, YYYY  "));
+    $("#current-temp2").append(data5day.DailyForecasts[2].Temperature.Maximum.Value + "F");
     $("#temp-phrase2").append(data5day.DailyForecasts[2].Day.IconPhrase);
 
     //Day4
-    $("#day3").append(data5day.DailyForecasts[3].Date);
-    $("#current-temp3").append(data5day.DailyForecasts[3].Temperature.Maximum.Value);
+    $("#day3").append(dayjs(data5day.DailyForecasts[3].Date).format(" dddd MMMM DD, YYYY  "));
+    $("#current-temp3").append(data5day.DailyForecasts[3].Temperature.Maximum.Value + "F");
     $("#temp-phrase3").append(data5day.DailyForecasts[3].Day.IconPhrase);
 
     //Day5
-    $("#day4").append(data5day.DailyForecasts[4].Date);
-    $("#current-temp4").append(data5day.DailyForecasts[4].Temperature.Maximum.Value);
+    $("#day4").append(dayjs(data5day.DailyForecasts[4].Date).format(" dddd MMMM DD, YYYY   "));
+    $("#current-temp4").append(data5day.DailyForecasts[4].Temperature.Maximum.Value + "F");
     $("#temp-phrase4").append(data5day.DailyForecasts[4].Day.IconPhrase);
 
 
@@ -95,27 +95,30 @@ for (var i = 1; i <= 25; i++) {
 }
 
 
+
 //  Calls cola data USA API
- function getcolaAPI(){
- var userhousingsearch =$("#userhousingsearch").val();
- var colaURL = "https://datausa.io/api/data?drilldowns=State&measures=Population&year=latest" + userhousingsearch;
+ function colaAPI(){
+ var housingbtn =$("#housingbtn").val()
+ var colaURL = "https://datausa.io/api/data?drilldowns=Place&measures=Population&year=latest" + housingbtn;
 
   fetch(colaURL)
    .then(function(response){
-  
+
    return response.json();
    })
    .then(function(coladata){
-    console.log(coladata.data[5]);
+
     
   
 
  for (var i = 1; i<=52; i++){
  $("#housingresults").append($("<tr><td>" + coladata.data[i].Population + "</td><td>" + coladata.data[i].State + "</td><td>" + coladata.data[i].Year + "</td></tr>" ));
  }
- }); 
+
+  });
+
  }
- getcolaAPI();
+ getcolaAPI()
 
 
  //Runs the following functions on document load
@@ -169,6 +172,17 @@ for (var i = 1; i <= 25; i++) {
 
  });
 
+
+// Weather Button Parsely.js validation function
+ $(function () {
+  $('#userCitySearch').parsley().on('field:validated', function() {
+    var ok = $('.parsley-error').length === 0;
+  })
+ .on('form:submit', function() {
+   return; // Get AccuWeatherAPI function goes here. It will run on form submit.
+  });
+ });
+
  // Weather Modal Close on click
 $(".modal-close").on("click", function() {
   $("#weatherModal").removeClass("is-active");
@@ -179,12 +193,12 @@ $(".modal-close").on("click", function() {
  $("#jobsModal").removeClass("is-active");
 });
 
-//Housing Modal Close on click
+// Housing Modal Close on click
 $(".modal-close").on("click", function() {
  $("#housingModal").removeClass("is-active");
 });
 
-//Weather Button Parsely.js validation function
+// Weather Button Parsely.js validation function
 $(function () {
   $('#userCitySearch').parsley().on('field:validated', function() {
     var ok = $('.parsley-error').length === 0;
@@ -193,7 +207,14 @@ $(function () {
   $(document).on("submit", function(clickCity){
     clickCity.preventDefault();
     console.log(clickCity);
-  getAccuWeatherAPI();
+   
+    $("#day0").empty();
+    $("#day1").empty();
+    $("#day2").empty();
+    $("#day3").empty();
+    $("#day4").empty();
+    getAccuWeatherAPI();
+
   });
 });
 
@@ -205,13 +226,13 @@ $(function () {
   })
   .on('form:submit', function() {
     $("#results").empty();
-   getJobsAPI(); // Get JobsAPI function goes here.
+    //getJobsAPI(); // Get JobsAPI function goes here.
   });
 });
 
 // Housing Button Parsely.js validation function
 $(function () {
-  $('#userhousingsearch').parsley().on('field:validated', function() {
+  $('#housingSearch').parsley().on('field:validated', function() {
     var ok = $('.parsley-error').length === 0;
     $("#housingModal").toggleClass('is-active hidden', !ok);
   })

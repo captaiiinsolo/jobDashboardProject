@@ -226,7 +226,7 @@ $(function () {
   })
   .on('form:submit', function() {
     $("#results").empty();
-    //getJobsAPI(); // Get JobsAPI function goes here.
+    getJobsAPI(); // Get JobsAPI function goes here.
   });
 });
 

@@ -97,8 +97,8 @@ for (var i = 1; i <= 25; i++) {
    })
    .then(function(coladata){
 
-    
-  
+
+
 
  for (var i = 1; i<=52; i++){
  $("#housingresults").append($("<tr><td>" + coladata.data[i].Population + "</td><td>" + coladata.data[i].State + "</td><td>" + coladata.data[i].Year + "</td></tr>" ));
@@ -107,7 +107,7 @@ for (var i = 1; i <= 25; i++) {
   });
 
  }
-  
+
 // Toggles Weather Container Visibility on nav link click
  function showWeather() {
   $("#navWeather").on("click", function() {
@@ -173,12 +173,23 @@ $(function () {
   $(document).on("submit", function(clickCity){
     clickCity.preventDefault();
     console.log(clickCity);
-   
+
     $("#day0").empty();
     $("#day1").empty();
     $("#day2").empty();
     $("#day3").empty();
     $("#day4").empty();
+    $("#current-temp0").empty();
+    $("#current-temp1").empty();
+    $("#current-temp2").empty();
+    $("#current-temp3").empty();
+    $("#current-temp4").empty();
+    $("#temp-phrase0").empty();
+    $("#temp-phrase1").empty();
+    $("#temp-phrase2").empty();
+    $("#temp-phrase3").empty();
+    $("#temp-phrase4").empty();
+
     getAccuWeatherAPI();
 
   });
@@ -205,7 +216,7 @@ $(function () {
   .on('form:submit', function() {
     $("#housingresults").empty();
     getcolaAPI();
-    
+
   });
 });
 

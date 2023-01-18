@@ -118,7 +118,7 @@ for (var i = 1; i <= 25; i++) {
   });
 
  }
- getcolaAPI()
+ 
 
 
  //Runs the following functions on document load
@@ -238,6 +238,7 @@ $(function () {
   })
   .on('form:submit', function() {
     $("#housingresults").empty();
+    getcolaAPI();
     
   });
 });

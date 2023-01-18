@@ -59,15 +59,6 @@ function getAccuWeatherAPI() {
   });
 }
 
-
-
-
-
-
-
-
-
-
 // Calls the adzuna job board API
 function getJobsAPI() {
   var appID = "59959f13";
@@ -94,8 +85,6 @@ for (var i = 1; i <= 25; i++) {
 });
 }
 
-
-
 //  Calls cola data USA API
  function colaAPI(){
  var housingbtn =$("#housingbtn").val()
@@ -119,19 +108,6 @@ for (var i = 1; i <= 25; i++) {
 
  }
  
-
-
- //Runs the following functions on document load
- $(document).ready(function() {
-  showJobs();   showHousing();
-   // Check for click events on the navbar burger icon
-  $(".navbar-burger").click(function() {
-       // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"       $(".navbar-burger").toggleClass("is-active");
-      $(".navbar-menu").toggleClass("is-active")
-
-});
- });
-
 // Toggles Weather Container Visibility on nav link click
  function showWeather() {
   $("#navWeather").on("click", function() {
@@ -172,16 +148,6 @@ for (var i = 1; i <= 25; i++) {
 
  });
 
-
-// Weather Button Parsely.js validation function
- $(function () {
-  $('#userCitySearch').parsley().on('field:validated', function() {
-    var ok = $('.parsley-error').length === 0;
-  })
- .on('form:submit', function() {
-   return; // Get AccuWeatherAPI function goes here. It will run on form submit.
-  });
- });
 
  // Weather Modal Close on click
 $(".modal-close").on("click", function() {
@@ -245,4 +211,3 @@ $(function () {
 
 // Intro.Js tour start
 introJs().start();
-//final check
